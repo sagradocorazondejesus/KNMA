@@ -105,28 +105,46 @@ function esAcorde(texto){
 }
 
 function convertirLinea(linea){
-  let html = "";
-  let partes = linea.split(/(\[.*?\])/g);
-  let acordePendiente = "";
+  let textoVisible = "";
+  let acordesPorPosicion = {};
+  let posicion = 0;
+  let i = 0;
 
-  partes.forEach(parte => {
-    if(parte.startsWith("[") && parte.endsWith("]")){
-      acordePendiente = parte.slice(1, -1);
-    } else if(parte !== ""){
-      let acorde = acordePendiente ? mostrarAcorde(acordePendiente) : "&nbsp;";
+  while(i < linea.length){
+    if(linea[i] === "["){
+      const cierre = linea.indexOf("]", i);
 
-      html += `
-        <span class="bloque-acorde">
-          <span class="acorde-arriba">${acorde}</span>
-          <span class="texto-abajo">${parte}</span>
-        </span>
-      `;
+      if(cierre !== -1){
+        const acordeOriginal = linea.substring(i + 1, cierre);
 
-      acordePendiente = "";
+        if(esAcorde(acordeOriginal)){
+          acordesPorPosicion[posicion] = mostrarAcorde(acordeOriginal);
+          i = cierre + 1;
+          continue;
+        }
+      }
     }
-  });
 
-  return html;
+    textoVisible += linea[i];
+    posicion++;
+    i++;
+  }
+
+  let lineaAcordes = "";
+
+  for(let j = 0; j <= textoVisible.length; j++){
+    if(acordesPorPosicion[j]){
+      lineaAcordes += acordesPorPosicion[j];
+      j += acordesPorPosicion[j].length - 1;
+    }else{
+      lineaAcordes += " ";
+    }
+  }
+
+  return `
+    <div class="linea-acordes-nueva">${lineaAcordes}</div>
+    <div class="linea-letra-nueva">${textoVisible}</div>
+  `;
 }
 
 function cambiarTono(pasos){
