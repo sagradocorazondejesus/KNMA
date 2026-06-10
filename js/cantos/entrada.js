@@ -61,32 +61,32 @@ window.CANTOS_ENTRADA = [
     notas: "Canto de entrada",
     letra:`
 [coro]
-Qu[G]e alegría [C]es Venir[D]
+Qu[G]e alegría [C]es Venir [D]
 a la casa de Di[G]os [Em]
-que alegría es part[C]icipar[D]
+que alegría es part[C]icipar [D]
 del pan de Di[G]os
 
 [verso]
-Vengamos t[G]odos[D]
-a la casa de Di[G]os[Em]
-cantad al[C]egres[D]
+Vengamos t[G]odos [D]
+a la casa de Di[G]os [Em]
+cantad al[C]egres [D]
 con un mismo am[G]or.
 
 [coro]
-Qu[G]e alegría [C]es Venir[D]
-a la casa de Di[G]os  [Em]
-que alegría es part[C]icipar[D]
+Qu[G]e alegría [C]es Venir [D]
+a la casa de Di[G]os [Em]
+que alegría es part[C]icipar [D]
 del pan de Di[G]os
 
 [verso]
-P[G]or qué el Señ[C]or[D]
-en nosotros est[G]a[D]
-y nueva vida el nos dará
+P[G]or qué el Señ[C]or [D]
+en nosotros est[G]a [D]
+y nueva vida el nos dar[G]á
 
 [coro]
-Qu[G]e alegría [C]es Venir[D]
+Qu[G]e alegría [C]es Venir [D]
 a la casa de Di[G]os[Em]
-que alegría es part[C]icipar[D]
+que alegría es part[C]icipar [D]
 del pan de Di[G]os
 `
   }
