@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantoral Kerigma</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header class="encabezado">
+  <img src="img/logo-kerigma.jpg" alt="Logo Kerigma" class="logo">
+  <h1>Cantoral Kerigma</h1>
+  <p>Nuevo milagro de amor</p>
+</header>
+
+<main class="contenedor">
+
+  <section class="panel no-print">
+    <input type="text" id="buscar" placeholder="Buscar canto...">
+
+    <select id="filtroCategoria">
+      <option value="">Todas las categorías</option>
+      <option>Entrada</option>
+      <option>Marianos</option>
+    </select>
+
+    <select id="filtroTiempo">
+      <option value="">Todos los tiempos</option>
+      <option>Adviento</option>
+      <option>Navidad</option>
+      <option>Cuaresma</option>
+      <option>Pascua</option>
+      <option>Ordinario</option>
+      <option>Mariano</option>
+    </select>
+
+<button id="btnFavoritos" onclick="alternarVerFavoritos()">☆ Ver favoritos</button>
+
+  </section>
+
+  <section class="panel no-print">
+    <h2>Cantos</h2>
+    <div id="listaCantos" class="lista-scroll"></div>
+  </section>
+
+  <section class="panel canto">
+    <h2 id="tituloCanto">Selecciona un canto</h2>
+    <div id="datosCanto"></div>
+
+    <div class="botones no-print">
+      <button onclick="cambiarTono(-1)">-1</button>
+      <button onclick="tonoOriginal()">Original</button>
+      <button onclick="cambiarTono(1)">+1</button>
+    </div>
+
+    <div class="botones no-print">
+      <button onclick="cambiarSistema()">Letras / Do Re Mi</button>
+      <button onclick="cambiarLetra(-1)">A-</button>
+      <button onclick="cambiarLetra(1)">A+</button>
+    </div>
+
+    <p id="tonoActual"></p>
+
+<button class="no-print" id="btnMarcarFavorito" onclick="marcarFavorito()">☆ Agregar a favoritos</button>
+
+    <div id="letraCanto" class="letra"></div>
+
+    <button class="no-print imprimir" onclick="window.print()">Imprimir / Guardar PDF</button>
+  </section>
+
+</main>
+
+<script src="js/cantos/entrada.js"></script>
+<script src="js/cantos/marianos.js"></script>
+<script src="js/transpositor.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
