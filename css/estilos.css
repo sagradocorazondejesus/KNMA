@@ -146,6 +146,21 @@ button{
   margin-top:20px;
 }
 
+.linea-acordes-nueva{
+  color:var(--vino);
+  font-weight:bold;
+  font-family:"Courier New", monospace;
+  white-space:pre;
+  line-height:1;
+  min-height:14px;
+}
+
+.linea-letra-nueva{
+  font-family:"Courier New", monospace;
+  white-space:pre-wrap;
+  line-height:1.15;
+}
+
 @media print{
   body{ background:white; }
 
