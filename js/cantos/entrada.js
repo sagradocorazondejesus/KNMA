@@ -61,30 +61,33 @@ window.CANTOS_ENTRADA = [
     notas: "Canto de entrada",
     letra:`
 [coro]
-Que alegría es Venir
-a la casa de Dios
-que alegría es participar
-del pan de Dios
+Qu[G]e alegría [C]es Venir [D]
+a la casa de Di[G]os  [Em]
+que alegría es part[C]icipar  [D]
+del pan de Di[G]os
 
 [verso]
-Vengamos todos
-a la casa de Dios
-cantad alegres con un mismo amor.
+Vengamos t[G]odos   [D]
+a la casa de Di[G]os  [Em]
+cantad al[C]egres  [D]
+con un mismo am[G]or.
 
 [coro]
-Que alegría es venir
-a la casa de Dios
-que alegría es participar del pan de Dios
+Qu[G]e alegría [C]es Venir [D]
+a la casa de Di[G]os  [Em]
+que alegría es part[C]icipar  [D]
+del pan de Di[G]os
 
 [verso]
-Por qué el Señor
-en nosotros es ta
+P[G]or qué el Señ[C]or  [D]
+en nosotros est[G]a  [D]
 y nueva vida el nos dará
 
 [coro]
-Que alegría es venir
-a la casa de Dios
-que alegría es participar del pan de Dios
+Qu[G]e alegría [C]es Venir [D]
+a la casa de Di[G]os  [Em]
+que alegría es part[C]icipar  [D]
+del pan de Di[G]os
 `
   }
 ];
