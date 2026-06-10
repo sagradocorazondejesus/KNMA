@@ -1,0 +1,232 @@
+:root{
+  --vino:#7b1020;
+  --fondo:#f7f1ec;
+  --tarjeta:#ffffff;
+  --texto:#222;
+  --suave:#eadde0;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:var(--fondo);
+  color:var(--texto);
+}
+
+.encabezado{
+  background:white;
+  text-align:center;
+  padding:14px;
+  box-shadow:0 2px 10px #0002;
+}
+
+.logo{
+  max-width:220px;
+  width:80%;
+}
+
+.encabezado h1{
+  margin:6px 0 0;
+  color:var(--vino);
+}
+
+.encabezado p{
+  margin:4px 0;
+  color:#555;
+}
+
+.contenedor{
+  max-width:900px;
+  margin:auto;
+  padding:14px;
+}
+
+.panel{
+  background:var(--tarjeta);
+  border-radius:18px;
+  padding:15px;
+  margin-bottom:15px;
+  box-shadow:0 3px 12px #0001;
+}
+
+input, select, button{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:12px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+button{
+  background:var(--vino);
+  color:white;
+  border:none;
+  font-weight:bold;
+}
+
+.botones{
+  display:flex;
+  gap:8px;
+}
+
+.lista-item{
+  padding:10 px 12px;
+  border-bottom:1px solid #ddd;
+  cursor:pointer;
+}
+
+.lista-titulo{
+  font-size:18px;
+  font-weight:bold;
+  color:var(--vino);
+}
+
+.etiqueta{
+  display:inline-block;
+  background:var(--suave);
+  color:var(--vino);
+  padding:5px 10px;
+  border-radius:20px;
+  margin:3px 3px 3px 0;
+  font-size:13px;
+}
+
+.canto h2{
+  color:var(--vino);
+}
+
+.letra{
+  font-family:Arial, sans-serif;
+  font-size:18px;
+  line-height:1.35;
+  overflow-x:hidden;
+}
+
+.seccion-canto{
+  font-weight:bold;
+  color:var(--vino);
+  margin:18px 0 8px;
+  padding-bottom:4px;
+  border-bottom:1px solid var(--suave);
+}
+
+.linea-canto{
+  margin-bottom:10px;
+}
+
+.bloque-acorde{
+  display:inline-block;
+  vertical-align:bottom;
+  margin-right:4px;
+  margin-bottom:3px;
+}
+
+.acorde-arriba{
+  display:block;
+  color:var(--vino);
+  font-weight:bold;
+  font-size:.82em;
+  line-height:1;
+  min-height:10px;
+}
+
+.texto-abajo{
+  display:block;
+  line-height:1.22;
+}
+
+.espacio{
+  height:8px;
+}
+
+.imprimir{
+  margin-top:20px;
+}
+
+@media print{
+  body{ background:white; }
+
+  .no-print{ display:none !important; }
+
+  .encabezado{
+    box-shadow:none;
+    padding:5px;
+  }
+
+  .logo{ max-width:130px; }
+
+  .encabezado h1{ font-size:20px; }
+
+  .encabezado p{ font-size:12px; }
+
+  .panel{
+    box-shadow:none;
+    border:none;
+    padding:4px;
+    margin-bottom:4px;
+  }
+
+  .canto h2{
+    font-size:18px;
+    margin:4px 0;
+  }
+
+  .etiqueta{
+    font-size:11px;
+    padding:3px 7px;
+  }
+
+  #datosCanto p,
+  #tonoActual{
+    font-size:12px;
+    margin:3px 0;
+  }
+
+  .letra{
+    column-count:2;
+    column-gap:20px;
+    column-rule:1px solid #bbb;
+    font-size:12px !important;
+    line-height:1.15;
+    overflow:visible;
+  }
+
+  .seccion-canto{
+    break-after:avoid;
+    margin:10px 0 5px;
+    font-size:13px;
+  }
+
+  .linea-canto{
+    break-inside:avoid;
+    margin-bottom:5px;
+  }
+
+  .bloque-acorde{
+    margin-right:2px;
+    margin-bottom:2px;
+  }
+
+  .acorde-arriba{
+    font-size:.75em;
+    min-height:9px;
+  }
+
+  .texto-abajo{
+    line-height:1.05;
+  }
+
+  .espacio{
+    height:5px;
+  }
+}
+
+.lista-scroll{
+  max-height:330px;
+  overflow-y:auto;
+  border:1px solid #eee;
+  border-radius:12px;
+}
