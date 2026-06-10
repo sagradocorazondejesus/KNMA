@@ -51,8 +51,6 @@
   </section>
 
   <section class="panel canto">
-    <h2 id="tituloCanto">Selecciona un canto</h2>
-    <div id="datosCanto"></div>
 
     <div class="botones no-print">
       <button onclick="cambiarTono(-1)">-1</button>
@@ -66,10 +64,11 @@
       <button onclick="cambiarLetra(1)">A+</button>
     </div>
 
+    <button class="no-print" id="btnMarcarFavorito" onclick="marcarFavorito()">☆ Agregar a favoritos</button>
+
+    <h2 id="tituloCanto">Selecciona un canto</h2>
+    <div id="datosCanto"></div>
     <p id="tonoActual"></p>
-
-<button class="no-print" id="btnMarcarFavorito" onclick="marcarFavorito()">☆ Agregar a favoritos</button>
-
     <div id="letraCanto" class="letra"></div>
 
     <button class="no-print imprimir" onclick="window.print()">Imprimir / Guardar PDF</button>
