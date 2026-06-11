@@ -1,8 +1,8 @@
 window.CANTOS_CORDERO = [
   {
     titulo: "Cordero Mejia",
-    categoria: "cordero",
-    tiempo: "ordinario",
+    categoria: "Cordero",
+    tiempo: "Ordinario",
     tono: "Em",
     autor: "Kerigma",
     notas: "Canto de cordero",
