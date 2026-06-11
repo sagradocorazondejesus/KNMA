@@ -1,7 +1,7 @@
 window.CANTOS_OTROS = [
   {
     titulo: "Espíritu Santo ven, ven",
-    categoria: "otros",
+    categoria: "Otros",
     tiempo: "Ordinario",
     tono: "C",
     autor: "Kerigma",
@@ -35,7 +35,7 @@ Esp[A]íritu Santo v[D]en, ven
   },
     {
     titulo: "Ven, Espíritu de Dios",
-    categoria: "otros",
+    categoria: "Otros",
     tiempo: "Ordinario",
     tono: "Dm",
     autor: "Kerigma",
