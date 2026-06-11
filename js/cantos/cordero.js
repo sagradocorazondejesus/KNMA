@@ -1,6 +1,6 @@
 window.CANTOS_CORDERO = [
   {
-    titulo: "",
+    titulo: "Cordero Mejia",
     categoria: "cordero",
     tiempo: "ordinario",
     tono: "Em",
