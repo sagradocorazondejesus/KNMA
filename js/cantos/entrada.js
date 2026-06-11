@@ -94,7 +94,7 @@ del pan de Di[G]os
     titulo: "Vamos Caminando a la casa del Señor",
     categoria: "Entrada",
     tiempo: "Ordinario",
-    tono: "G",
+    tono: "A",
     trabacripcion: "Kerigma",
     notas: "Canto de entrada",
     letra:`
