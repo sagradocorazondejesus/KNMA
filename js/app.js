@@ -10,6 +10,7 @@ let sistemaDoReMi = false;
 let tamanoLetra = 18;
 let verSoloFavoritos = false;
 let favoritos = JSON.parse(localStorage.getItem("favoritosKerigma")) || [];
+let mostrarAcordes = true;
 
 function cargarLista(){
   let totalMostrados = 0;
@@ -145,10 +146,10 @@ function convertirLinea(linea){
     }
   }
 
-  return `
-    <div class="linea-acordes-nueva">${lineaAcordes}</div>
-    <div class="linea-letra-nueva">${textoVisible}</div>
-  `;
+ return `
+  ${mostrarAcordes ? `<div class="linea-acordes-nueva">${lineaAcordes}</div>` : ""}
+  <div class="linea-letra-nueva">${textoVisible}</div>
+`;
 }
 
 function cambiarTono(pasos){
@@ -236,3 +237,18 @@ document.getElementById("filtroCategoria").addEventListener("change", cargarList
 document.getElementById("filtroTiempo").addEventListener("change", cargarLista);
 
 cargarLista();
+
+
+function alternarAcordes(){
+  mostrarAcordes = !mostrarAcordes;
+
+  const btn = document.getElementById("btnAcordes");
+  btn.textContent = mostrarAcordes ? "Acordes ON" : "Solo letra";
+
+  mostrarCanto();
+}
+
+
+
+
+
