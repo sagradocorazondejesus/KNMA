@@ -1,8 +1,8 @@
 window.CANTOS_OFERTORIO = [
   {
     titulo: "Hoy Señor",
-    categoria: "ofertorio",
-    tiempo: "ordinario",
+    categoria: "Ofertorio",
+    tiempo: "Ordinario",
     tono: "C",
     autor: "Kerigma",
     notas: "Canto de ofertorio",
