@@ -91,7 +91,7 @@ del pan de Di[G]os
 `
   },
   {
-    titulo: "Que alegría es venir",
+    titulo: "Vamos Caminando a la casa del Señor",
     categoria: "Entrada",
     tiempo: "Ordinario",
     tono: "G",
