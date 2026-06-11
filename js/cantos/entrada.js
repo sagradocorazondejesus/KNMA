@@ -102,17 +102,17 @@ del pan de Di[G]os
 V[A]amos camin[C#m]ando
 a la c[D]asa del Señ[E]or
 J[A]untos como herm[C#m]anos
-en un gr[D]an lazo de am[D]or
+en un gr[D]an lazo de am[E]or
 
 [coro]
 Por que Cr[D]isto ha demostr[E]ado
-con sus [A]obras l[G#7]a verd[F#m]ad
+con sus [A]obras l[C#m7]a verd[F#m]ad
 por que s[D]olo un buen ap[E]osto
 sentir[A]a felicid[A7]ad
 
 [Coro]
 Por que el m[D]undo neces[E]ita
-mas am[A]or y l[G#7]ibert[A7]ad
+mas am[A]or y l[C#m7]ibert[F#m]ad
 es por [D]eso que ven[E]imos
 a cant[D]arl[E]e a D[A]ios
 `
