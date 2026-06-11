@@ -2,7 +2,7 @@ window.CANTOS_SALIDA = [
   {
     titulo: "Quiero darte las gracias",
     categoria: "Salida",
-    tiempo: "ordinario",
+    tiempo: "Ordinario",
     tono: "G",
     autor: "Kerigma",
     notas: "Canto de salida",
