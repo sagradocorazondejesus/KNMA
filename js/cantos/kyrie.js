@@ -2,7 +2,7 @@ window.CANTOS_KYRIE = [
   {
     titulo: "Kyrie Am",
     categoria: "Kyrie",
-    tiempo: "ordinario",
+    tiempo: "Ordinario",
     tono: "Am",
     autor: "Kerigma",
     notas: "Canto de Kyrie",
