@@ -15,15 +15,17 @@ En el n[G]ombre d[A]el Señ[D]or
 
 [verso 1]
 [D7]Acomp[G]añame, il[D]uminame
-t[A]oda mi v[D]ida
+t[A]oma mi v[D]ida
 A[D7]comp[G]añame ilum[D]iname
 Esp[A]íritu Santo v[D]en, ven
 
 [veros 2]
 P[D7]urif[G]icame, sant[D]ificame
-t[A]oda mi v[D]ida
+t[A]oma mi v[D]ida
 P[D7]urif[G]icame, sant[D]ificame
 Esp[A]íritu Santo v[D]en, ven
+
+
 
 `
   },
