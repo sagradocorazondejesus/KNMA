@@ -246,7 +246,7 @@ button{
 }
 
 .lista-scroll{
-  max-height:330px;
+  max-height:230px;
   overflow-y:auto;
   border:1px solid #eee;
   border-radius:12px;
