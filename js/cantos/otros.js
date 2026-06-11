@@ -25,7 +25,11 @@ t[A]oma mi v[D]ida
 P[D7]urif[G]icame, sant[D]ificame
 Esp[A]íritu Santo v[D]en, ven
 
-
+[Verso 3]
+R[D7]enuev[G]ame, transf[D]ormame
+t[A]u cada d[D]ia
+R[D7]enuev[G]ame, transf[D]ormame
+Esp[A]íritu Santo v[D]en, ven
 
 `
   },
