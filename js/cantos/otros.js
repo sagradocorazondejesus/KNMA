@@ -5,7 +5,7 @@ window.CANTOS_OTROS = [
     tiempo: "Ordinario",
     tono: "C",
     autor: "Kerigma",
-    notas: "Canto del Espiritu Santo",
+    notas: "Canto del Espíritu Santo, Espiritu",
     letra:`
 [coro]
 E[D]spíritu Santo ven, ven;
@@ -39,10 +39,10 @@ Esp[A]íritu Santo v[D]en, ven
     tiempo: "Ordinario",
     tono: "Dm",
     autor: "Kerigma",
-    notas: "Canto del Espiritu Santo",
+    notas: "Canto del Espíritu Santo, Espiritu",
     letra:`
 [coro]
-V[Dm]en, Espiritu de Dios.
+V[Dm]en, Espíritu de Dios.
 v[C]en, envuélveme en tu amor,
 V[Bb]en, Espíritu de Dios,
 ven a m[A7]i (2)
