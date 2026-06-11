@@ -2,7 +2,7 @@ window.CANTOS_ALELUYA = [
   {
     titulo: "Aleluya miserere",
     categoria: "aleluya",
-    tiempo: "ordinario",
+    tiempo: "Ordinario",
     tono: "G",
     autor: "Kerigma",
     notas: "Canto de aleluya",
