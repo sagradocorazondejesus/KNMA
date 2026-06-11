@@ -1,6 +1,11 @@
 const TODOS_LOS_CANTOS = [
   ...window.CANTOS_ENTRADA,
+  ...window.CANTOS_KYRIE,
   ...window.CANTOS_GLORIA,
+  ...window.CANTOS_ALELUYA,
+  ...window.CANTOS_OFERTORIO,
+  ...window.CANTOS_SANTO,
+  ...window.CANTOS_CORDERO,
   ...window.CANTOS_COMUNION,
   ...window.CANTOS_SALIDA,
   ...window.CANTOS_MARIANOS,
