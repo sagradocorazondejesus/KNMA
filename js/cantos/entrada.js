@@ -66,7 +66,7 @@ a la casa de Di[G]os [Em]
 que alegría es part[C]icipar [D]
 del pan de Di[G]os
 
-[verso]
+[verso 1]
 Vengamos t[G]odos [D]
 a la casa de Di[G]os [Em]
 cantad al[C]egres [D]
@@ -78,7 +78,7 @@ a la casa de Di[G]os [Em]
 que alegría es part[C]icipar [D]
 del pan de Di[G]os
 
-[verso]
+[verso 2]
 P[G]or qué el Señ[C]or [D]
 en nosotros est[G]a [D]
 y nueva vida el nos dar[G]á
@@ -98,19 +98,19 @@ del pan de Di[G]os
     trabacripcion: "Kerigma",
     notas: "Canto de entrada",
     letra:`
-[verso]
+[coro]
 V[A]amos camin[C#m]ando
 a la c[D]asa del Señ[E]or
 J[A]untos como herm[C#m]anos
 en un gr[D]an lazo de am[E]or
 
-[coro]
+[verso 1]
 Porque Cr[D]isto ha demostr[E]ado
 con sus [A]obras l[C#7]a verd[F#m]ad
 porque s[D]olo un buen ap[E]ostol
 sentir[A]a felicid[A7]ad
 
-[Coro]
+[verso 2]
 Porque el m[D]undo neces[E]ita
 mas am[A]or y l[C#7]ibert[F#m]ad
 es por [D]eso que ven[E]imos
