@@ -2,7 +2,7 @@ const TODOS_LOS_CANTOS = [
   ...window.CANTOS_ENTRADA,
   ...window.CANTOS_GLORIA,
   ...window.CANTOS_MARIANOS,
-  ...windows.CANTOS_OTROS
+  ...window.CANTOS_OTROS
 ];
 
 let cantoActual = null;
