@@ -251,3 +251,9 @@ button{
   border:1px solid #eee;
   border-radius:12px;
 }
+
+.contador-cantos{
+  margin:0 0 10px;
+  color:#666;
+  font-size:14px;
+}
