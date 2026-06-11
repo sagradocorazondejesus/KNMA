@@ -42,22 +42,34 @@ V[Bb]en, Espíritu de Dios,
 ven a m[A7]i (2)
 
 [verso 1]
-Ú[Dm]ngeme, env[D7]uélveme c[Gm]on tu luz,
-Ú[Dm]ngeme, env[D7]uélveme c[F]on tu poder,
-Ú[Dm]ngeme, envu[D7]élveme con tu pres[Gm]encia,
-Ú[A7]ngeme, envuélveme con tu [Dm]amor,
+Ú[Dm]ngeme, env[D7]uélveme
+c[Gm]on tu luz,
+Ú[Dm]ngeme, env[D7]uélveme
+c[F]on tu poder,
+Ú[Dm]ngeme, envu[D7]élveme
+con tu pres[Gm]encia,
+Ú[A7]ngeme, envuélveme
+con tu [Dm]amor,
 
 [verso 2]
-Libérame, purifícame con tu luz
-Libérame, purifícame con tu poder
-Libérame, purifícame con tu presencia
-Libérame, purifícame con tu amor
+Libérame, purifícame
+con tu luz
+Libérame, purifícame
+con tu poder
+Libérame, purifícame
+con tu presencia
+Libérame, purifícame
+con tu amor
 
 [verso 3]
-Inúndame, condúceme con tu luz
-Inúndame, condúceme con tu poder
-Inúndame, condúceme con tu presencia
-Inúndame, condúceme con tu amor
+Inúndame, condúceme
+con tu luz
+Inúndame, condúceme
+con tu poder
+Inúndame, condúceme
+con tu presencia
+Inúndame, condúceme
+con tu amor
 
 
 
