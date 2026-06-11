@@ -1,6 +1,6 @@
 const TODOS_LOS_CANTOS = [
   ...window.CANTOS_ENTRADA,
-  ...windoww.CANTOS_GLORIA,
+  ...window.CANTOS_GLORIA,
   ...window.CANTOS_MARIANOS
 ];
 
