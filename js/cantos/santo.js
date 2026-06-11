@@ -1,8 +1,8 @@
 window.CANTOS_SANTO = [
   {
     titulo: "Santo Papal",
-    categoria: "santo",
-    tiempo: "ordinario",
+    categoria: "Santo",
+    tiempo: "Ordinario",
     tono: "C#m",
     autor: "Kerigma",
     notas: "Canto de Santo",
