@@ -11,7 +11,7 @@ window.CANTOS_OTROS = [
 E[D]spíritu Santo ven, ven;
 Espíritu Santo v[A]en, ven
 Esp[D]íritu Santo ven, ven
-En el n[G]ombre d[A]el Señ[D]or
+En el n[G]ombre d[A]el Señ[D]or (2)
 
 [verso 1]
 [D7]Acomp[G]añame, il[D]uminame
@@ -77,7 +77,10 @@ con tu presencia
 Inúndame, condúceme
 con tu amor
 
-
+Derrama Señor tus dones
+Derrama Señor tus dones
+Derrama Señor tus dones
+muestranos tu poder
 
 `
   }
