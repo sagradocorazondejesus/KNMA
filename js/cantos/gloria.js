@@ -13,20 +13,37 @@ Gl[Em]oria, Gloria
 y [G]en la t[C]ierra
 [B7]a los hmbres p[Em]az (2)
 
-[Vverso 1]
-Te alabamos y
-te vendecimos
-te adoramos
-y glorificamos
-y nosotros hoy
-te damos gracias
-por tu grande
-y eterna gloria
-Gloria, Gloria
-a Dios en el cielo
-y en la tierra
-a los hombres paz
+[verso 1]
+Te alab[Em]amos y
+te vendec[D]imos
+te ador[C]amos
+y glorific[B7]amos
+y nos[Em]otros hoy
+te damos gr[D]acias
+por tu gr[C]ande
+y eterna gl[B7]oria
+
+[coro]
+Gl[Em]oria, Gloria
+[B7]a Dios en el c[Em]ielo
+y [G]en la t[C]ierra
+[B7]a los hmbres p[Em]az
+
+[cerso 2]
 Señor Dios nuetro
+Padre, Padre, Padre
+Se{or Dios hijo
+piedad, piedad Señor
 `
   }
 ];
+
+
+
+
+
+
+
+
+
+
