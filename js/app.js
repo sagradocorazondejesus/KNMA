@@ -11,6 +11,7 @@ let verSoloFavoritos = false;
 let favoritos = JSON.parse(localStorage.getItem("favoritosKerigma")) || [];
 
 function cargarLista(){
+  let totalMostrados = 0;
   const lista = document.getElementById("listaCantos");
   const buscar = document.getElementById("buscar").value.toLowerCase();
   const categoria = document.getElementById("filtroCategoria").value;
@@ -25,7 +26,7 @@ function cargarLista(){
     if(categoria && canto.categoria !== categoria) return;
     if(tiempo && canto.tiempo !== tiempo) return;
     if(verSoloFavoritos && !favoritos.includes(canto.titulo)) return;
-
+    totalMostrados++;
     lista.innerHTML += `
       <div class="lista-item" onclick="seleccionarCanto(${index})">
         <div class="lista-titulo">${canto.titulo}</div>
@@ -33,6 +34,8 @@ function cargarLista(){
       </div>
     `;
   });
+  document.getElementById("contadorCantos").textContent =
+  `Mostrando ${totalMostrados} de ${TODOS_LOS_CANTOS.length} cantos`;
 }
 
 function seleccionarCanto(index){
