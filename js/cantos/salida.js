@@ -8,18 +8,18 @@ window.CANTOS_SALIDA = [
     notas: "Canto de salida",
     letra:`
 [coro]
-Qu[G]iero darte
-las gr[C]acias, mi Señ[G]or,
-Por el don que me d[C]as
-cada mañ[D]ana,
+Q[G]uiero darte
+las gr[C]acias, mi S[G]eñor,
+Por el don que me d[D7]as
+cada mañ[G]ana[G7],
 
-Por los árb[C]oles,
-los p[D]ájaros y el s[G]ol, [Em]
-Por la ll[C]uvia 
-que az[D]ota en mi vent[G]ana. (2)
+Por los [C]árboles,
+los p[Cm]ájaros y el s[G]ol,[Em]
+Por la ll[Am]uvia 
+que [D]azota en mi vent[G]ana. (2)
 
-Gr[C]aci[G]as, muchas gr[C]ac[G]ias,
-m[C]i S[D]eñ[G]or.
+Gr[C]aci[Cm]as, muchas gr[C]ac[Em]ias,
+m[Am]i S[D7]eñ[G]or.
 
 `
   }
