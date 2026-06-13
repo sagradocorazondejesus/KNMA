@@ -8,20 +8,29 @@ window.CANTOS_KYRIE = [
     notas: "Canto de Kyrie",
     letra:`
 [coro]
-Señor ten piedad de nosotros
-Señor ten piedad
-Señor ten piedad de nosotros
-Señor ten piedad
+Señ[Am]or ten pied[A7]ad
+de nos[Dm]otros
+Señ[G7]or ten pied[C]ad. [E7]
+Señ[Am]or ten pied[A7]ad
+de nos[Dm]otros
+Señ[G7]or ten pied[C]ad. [E7
 
 [verso]
-Cristo ten piedad de nosotros
-Cristo ten piedad
-Cristo ten piedad de nosotros
+Cr[Am]isto ten piedad
+de nos[G]otros
+Cr[F]isto ten pied[E7]ad
+Cr[Am]isto ten piedad
+de nos[G]otros
+Cr[F]isto ten pied[E7]ad
 
 [coro]
-Señor ten piedad de nosotros
-Señor ten piedad
-Señor ten piedad de nosotros
+Señ[Am]or ten pied[A7]ad
+de nos[Dm]otros
+Señ[G7]or ten pied[C]ad. [E7]
+Señ[Am]or ten pied[A7]ad
+de nos[Dm]otros
+Señ[G7]or ten pied[C]ad. [E7
+de nosotros
 Señor ten piedad
 
 `
