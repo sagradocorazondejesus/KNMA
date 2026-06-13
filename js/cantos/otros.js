@@ -42,20 +42,20 @@ Esp[A]íritu Santo v[D]en, ven
     notas: "Canto del Espíritu Santo, Espiritu",
     letra:`
 [coro]
-V[Dm]en, Espíritu de Dios.
-v[C]en, envuélveme en tu amor,
-V[Bb]en, Espíritu de Dios,
-ven a m[A7]i (2)
+V[Em]en, Espíritu de Dios.
+v[D]en, envuélveme en tu amor,
+V[C]en, Espíritu de Dios,
+ven a m[B7]i (2)
 
 [verso 1]
-Ú[Dm]ngeme, env[D7]uélveme
-c[Gm]on tu luz,
-Ú[Dm]ngeme, env[D7]uélveme
-c[F]on tu poder,
-Ú[Dm]ngeme, envu[D7]élveme
-con tu pres[Gm]encia,
-Ú[A7]ngeme, envuélveme
-con tu [Dm]amor,
+Ú[Em]ngeme, env[E7]uélveme
+c[Am]on tu luz,
+Ú[D7]ngeme, envuélveme
+con tu pod[G]er,
+Ú[Em]ngeme, envu[E7]élveme
+con tu pres[Am]encia,
+Ú[B7]ngeme, envuélveme
+con tu [Em]amor,
 
 [verso 2]
 Libérame, purifícame
