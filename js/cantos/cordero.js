@@ -7,20 +7,22 @@ window.CANTOS_CORDERO = [
     autor: "Kerigma",
     notas: "Canto de cordero",
     letra:`
-    
-Cordero de Dios que quitas
-el pecado del mundo
-ten piedad de nosotros
-ten piedad de nosotros (2)
+[Em] [B7]   
 
-Cordero de Dios que quitas
-el pecado del mundo
-danos la paz
-danos la paz
-danos, danos,
-danos la paz,
-danos, danos,
-danos la paz.
+ 
+Cord[Em]ero de Dios que qu[D]itas
+[C]el pec[B7]ado del m[Em]und[E7]o
+t[Am]en pied[D7]ad de nos[G]otr[Em]os
+t[B7]en piedad de nos[Em]otros [B7] (2)
+
+Cord[Em]ero de Dios que qu[D]itas
+[C]el pec[B7]ado del m[Em]undo
+d[E7]anos la p[Am]az
+d[D7]anos la p[G]az
+d[Am]an[D7]os, d[G]an[Em]os,
+d[B7]anos la p[Em]az,[E7]
+d[Am]an[D7]os, d[G]an[Em]os,
+d[B7]anos la p[Em]az.
 
 `
   }
