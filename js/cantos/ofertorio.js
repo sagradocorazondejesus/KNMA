@@ -8,25 +8,27 @@ window.CANTOS_OFERTORIO = [
     notas: "Canto de ofertorio",
     letra:`
 
+[C] [G] [F] [G]
+
 [verso]
-Hoy Señor
-venimos a ofrecerte
-este humilde pan
-que es fruto del trabajo
-de la humanidad
-y es signo de fraternidad
-de fe esperanza y amistad
+H[C]oy Señ[G]or [F]
+venimos [G]a ofrecerte
+[C]este humilde p[G]an [F]
+que es fruto d[G]el trabajo
+d[C]e la humanid[G]ad [F]
+y es signo d[G]e fraternid[C]a [G]a [F]ad
+de fe esper[G]anza y amist[C]ad, [C7] [F]
 
 [coro]
-Tomalo aceptalo
-con amor transformalo
-en el cuerpo de jesus
-bendito seas señor
+Tomal[G]o [Em] aceptal[Am]o o [F]o
+con am[G]or transformal[C]o [C7] [F]
+en el c[G]uerpo d[Em]e Jes[Am]u u [F]us
+bendito s[G]eas señ[C]or
 
-Tomalo aceptalo
-con amor transformalo
-en la sangre de Jesus
-bendito seas Señor
+Tomal[G]o [Em] aceptal[Am]o o [F]o
+con am[G]or transformal[C]o [C7] [F]
+en la s[G]angre d[Em]e Jes[Am]u u [F]us
+bendito s[G]eas señ[C]or
 
 `
   }
