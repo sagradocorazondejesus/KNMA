@@ -8,16 +8,17 @@ window.CANTOS_ALELUYA = [
     notas: "Canto de aleluya",
     letra:`
 [verso]
-Aleluya, aleluya,
-aleluya, aleluya. (2)
+[G]Aleluya, [En]aleluya,
+[C]aleluya, alel[D7]uy[G]a. (2)
 
 [coro]
-aaaaaa, aaaaaa, aaaaaaa, aaaaaaaa.
+[G]aaaaaa, [Em]aaaaaa,
+[C]aaaaaaa, [D7aaaaaaaa.
 
 
 [verso]
-Aleluya, aleluya,
-aleluya, aleluya.
+[G]Aleluya, [En]aleluya,
+[C]aleluya, alel[D7]uy[G]a.
 
 `
   }
