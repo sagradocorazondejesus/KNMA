@@ -16,9 +16,9 @@ cada mañ[G]ana[G7],
 Por los [C]árboles,
 los p[Cm]ájaros y el s[G]ol,[Em]
 Por la ll[Am]uvia 
-que [D]azota en mi vent[G]ana. (2)
+que [D]azota en mi vent[G]ana. [G7] (2)
 
-Gr[C]aci[Cm]as, muchas gr[C]ac[Em]ias,
+Gr[C]aci[Cm]as, muchas gr[G]ac[Em]ias,
 m[Am]i S[D7]eñ[G]or.
 
 `
