@@ -99,22 +99,22 @@ del pan de Di[G]os
     notas: "Canto de entrada",
     letra:`
 [coro]
-V[A]amos camin[C#m]ando
-a la c[D]asa del Señ[E]or
-J[A]untos como herm[C#m]anos
-en un gr[D]an lazo de am[E]or
+V[C]amos camin[Em]ando
+a la c[F]asa del Señ[G]or
+J[C]untos como herm[Em]anos
+en un gr[F]an lazo de am[G]or
 
 [verso 1]
-Porque Cr[D]isto ha demostr[E]ado
-con sus [A]obras l[C#7]a verd[F#m]ad
-porque s[D]olo un buen ap[E]ostol
-sentir[A]a felicid[A7]ad
+Porque Cr[F]isto ha demostr[G]ado
+con sus [C]obras l[E7]a verd[Am]ad
+porque s[F]olo un buen ap[G]ostol
+sentir[C]a felicid[C7]ad
 
 [verso 2]
-Porque el m[D]undo neces[E]ita
-mas am[A]or y l[C#7]ibert[F#m]ad
-es por [D]eso que ven[E]imos
-a cant[D]arl[E]e a D[A]ios
+Porque el m[F]undo neces[G]ita
+mas am[C]or y l[E7]ibert[Am]ad
+es por [F]eso que ven[G]imos
+a cant[F]arl[G]e a D[C]ios
 `
   }
 ];
