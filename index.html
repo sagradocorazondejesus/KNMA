@@ -70,6 +70,24 @@
   <button onclick="iniciarMisaHoy()">▶ Iniciar Misa</button>
 </section>
 
+<section id="presentacionMisa" class="panel misa-presentacion" style="display:none;">
+
+  <div class="misa-cabecera">
+    <span id="misaContador">1 / 1</span>
+    <button onclick="cerrarPresentacionMisa()">✕ Salir</button>
+  </div>
+
+  <h2 id="misaMomento"></h2>
+
+  <div id="misaContenido"></div>
+
+  <div class="misa-nav">
+    <button onclick="cantoAnterior()">◀ Anterior</button>
+    <button onclick="cantoSiguiente()">Siguiente ▶</button>
+  </div>
+
+</section>
+
   <section class="panel canto">
 
     <div class="botones no-print">
