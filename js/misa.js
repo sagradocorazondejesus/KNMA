@@ -74,6 +74,14 @@ function iniciarMisaHoy(){
 
   document.getElementById("presentacionMisa").style.display = "block";
 
+document.querySelector(".encabezado").style.display = "none";
+document.querySelector(".menu-principal").style.display = "none";
+
+window.scrollTo({
+  top: 0,
+  behavior: "instant"
+});
+
   mostrarCantoMisa();
 }
 
@@ -114,6 +122,11 @@ function cantoSiguiente(){
 function cerrarPresentacionMisa(){
 
   document.getElementById("presentacionMisa").style.display = "none";
+
+  document.querySelector(".encabezado").style.display = "block";
+  document.querySelector(".menu-principal").style.display = "flex";
+
+  mostrarPantalla("misa");
 }
 
 
