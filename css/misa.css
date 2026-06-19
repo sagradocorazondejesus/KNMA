@@ -1,0 +1,14 @@
+.misa-panel h2{
+  color:var(--vino);
+}
+
+.misa-item{
+  margin-bottom:10px;
+}
+
+.misa-item label{
+  display:block;
+  font-weight:bold;
+  color:var(--vino);
+  margin-bottom:4px;
+}
