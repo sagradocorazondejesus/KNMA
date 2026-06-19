@@ -82,6 +82,11 @@ setTimeout(() => {
   });
 }, 200);
 
+
+if(document.documentElement.requestFullscreen){
+  document.documentElement.requestFullscreen();
+}
+
 document.querySelector(".encabezado").style.display = "none";
 document.querySelector(".menu-principal").style.display = "none";
 
