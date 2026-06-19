@@ -90,11 +90,9 @@ function mostrarCantoMisa(){
     `${indiceActualMisa + 1} / ${cantosPresentacion.length}`;
 
   document.getElementById("misaContenido").innerHTML = `
-    <h3>${actual.canto.titulo}</h3>
-    <pre style="white-space:pre-wrap;">
-${actual.canto.letra}
-    </pre>
-  `;
+  <h3>${actual.canto.titulo}</h3>
+  <div class="letra">${convertirLetraMisa(actual.canto.letra)}</div>
+`;
 }
 
 function cantoAnterior(){
@@ -117,3 +115,4 @@ function cerrarPresentacionMisa(){
 
   document.getElementById("presentacionMisa").style.display = "none";
 }
+
