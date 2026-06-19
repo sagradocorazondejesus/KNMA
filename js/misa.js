@@ -116,3 +116,30 @@ function cerrarPresentacionMisa(){
   document.getElementById("presentacionMisa").style.display = "none";
 }
 
+
+function convertirLetraMisa(letra){
+  let html = "";
+  const lineas = letra.trim().split("\n");
+
+  lineas.forEach(linea => {
+    const limpia = linea.trim();
+
+    if(limpia === ""){
+      html += `<div class="espacio"></div>`;
+      return;
+    }
+
+    if(esTituloSeccion(limpia)){
+      html += `<div class="seccion-canto">${limpia}</div>`;
+      return;
+    }
+
+    html += `
+      <div class="linea-canto">
+        ${convertirLinea(linea)}
+      </div>
+    `;
+  });
+
+  return html;
+}
