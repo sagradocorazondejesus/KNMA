@@ -259,22 +259,35 @@ function alternarAcordes(){
 
 
 function mostrarPantalla(pantalla){
+
+document.getElementById("btnCantos")
+  .classList.remove("menu-activo");
+
+document.getElementById("btnFavoritosMenu")
+  .classList.remove("menu-activo");
+
+document.getElementById("btnMisa")
+  .classList.remove("menu-activo");
+
+
   document.getElementById("pantallaCantos").style.display = "none";
   document.getElementById("pantallaFavoritos").style.display = "none";
   document.getElementById("pantallaMisa").style.display = "none";
 
   if(pantalla === "cantos"){
-    document.getElementById("pantallaCantos").style.display = "block";
-  }
+  document.getElementById("pantallaCantos").style.display = "block";
+  document.getElementById("btnCantos").classList.add("menu-activo");
+}
 
   if(pantalla === "favoritos"){
-    document.getElementById("pantallaFavoritos").style.display = "block";
-    cargarFavoritosPantalla();
-  }
+  document.getElementById("pantallaFavoritos").style.display = "block";
+  document.getElementById("btnFavoritosMenu").classList.add("menu-activo");
+  cargarFavoritosPantalla();
+}
 
   if(pantalla === "misa"){
-    document.getElementById("pantallaMisa").style.display = "block";
-  }
+  document.getElementById("pantallaMisa").style.display = "block";
+  document.getElementById("btnMisa").classList.add("menu-activo");
 }
 
 function cargarFavoritosPantalla(){
