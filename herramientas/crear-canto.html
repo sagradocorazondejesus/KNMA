@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Agregar Canto - Kerigma</title><style>
+body{
+  font-family:Arial,sans-serif;
+  max-width:900px;
+  margin:auto;
+  padding:15px;
+  background:#f7f1ec;
+}
+
+h1{
+  color:#7b1020;
+}
+
+input,
+select,
+textarea,
+button{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:12px;
+  border:1px solid #ccc;
+  box-sizing:border-box;
+}
+
+textarea{
+  min-height:250px;
+}
+
+button{
+  background:#7b1020;
+  color:white;
+  border:none;
+  font-weight:bold;
+}
+
+pre{
+  background:white;
+  padding:12px;
+  border-radius:12px;
+  overflow:auto;
+  white-space:pre-wrap;
+}
+</style></head><body><h1>🎵 Agregar Canto</h1><input id="titulo" placeholder="Título"><select id="categoria">
+  <option>Entrada</option>
+  <option>Kyrie</option>
+  <option>Gloria</option>
+  <option>Aleluya</option>
+  <option>Ofertorio</option>
+  <option>Santo</option>
+  <option>Cordero</option>
+  <option>Comunion</option>
+  <option>Salida</option>
+  <option>Marianos</option>
+  <option>Otros</option>
+</select><select id="tiempo">
+  <option>Ordinario</option>
+  <option>Adviento</option>
+  <option>Navidad</option>
+  <option>Cuaresma</option>
+  <option>Pascua</option>
+  <option>Mariano</option>
+</select><input id="tono" placeholder="Tono (Ej: G)">
+<input id="autor" placeholder="Autor">
+<input id="notas" placeholder="Notas"><textarea id="letra" placeholder="Pega aquí la letra y acordes"></textarea><button onclick="generar()">Generar código</button>
+
+<h2>Resultado</h2><pre id="resultado"></pre><script>
+function generar(){
+
+  const titulo = document.getElementById("titulo").value;
+  const categoria = document.getElementById("categoria").value;
+  const tiempo = document.getElementById("tiempo").value;
+  const tono = document.getElementById("tono").value;
+  const autor = document.getElementById("autor").value;
+  const notas = document.getElementById("notas").value;
+  const letra = document.getElementById("letra").value;
+
+  document.getElementById("resultado").textContent =
+`{
+  titulo: "${titulo}",
+  categoria: "${categoria}",
+  tiempo: "${tiempo}",
+  tono: "${tono}",
+  autor: "${autor}",
+  notas: "${notas}",
+  letra:\`
+${letra}
+\`
+},`;
+}
+</script></body>
+</html>
