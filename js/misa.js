@@ -140,15 +140,16 @@ function cerrarPresentacionMisa(){
 
   document.getElementById("presentacionMisa").style.display = "none";
 
-  document.querySelector(".encabezado").style.display = "block";
-  document.querySelector(".menu-principal").style.display = "flex";
+document.getElementById("pantallaMisa").style.display = "block";
 
+document.querySelector(".encabezado").style.display = "block";
+document.querySelector(".menu-principal").style.display = "flex";
 
 if(document.fullscreenElement){
   document.exitFullscreen();
 }
 
-  mostrarPantalla("misa");
+mostrarPantalla("misa");
 
 }
 
