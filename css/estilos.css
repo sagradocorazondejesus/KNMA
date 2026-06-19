@@ -72,6 +72,37 @@ button{
   gap:8px;
 }
 
+
+
+
+
+.menu-principal{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  margin-bottom:10px;
+}
+
+.menu-principal button{
+  width:auto;
+  padding:8px 14px;
+  font-size:15px;
+  border-radius:20px;
+}
+
+.menu-activo{
+  background:var(--vino) !important;
+  color:white !important;
+}
+
+
+
+
+
+
+
 .lista-item{
   padding:10 px 12px;
   border-bottom:1px solid #ddd;
