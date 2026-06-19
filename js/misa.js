@@ -6,7 +6,7 @@ const MOMENTOS_MISA = [
   "Ofertorio",
   "Santo",
   "Cordero",
-  "Comunión",
+  "Comunion",
   "Salida"
 ];
 
