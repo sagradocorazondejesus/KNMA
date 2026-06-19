@@ -85,15 +85,19 @@ button{
 
 .menu-principal button{
   width:auto;
-  padding:6px 10px;
-  font-size:14px;
-  border-radius:20px;
+  padding:5px 9px;
+  font-size:13px;
+  border-radius:18px;
   white-space:nowrap;
+  background:#eadde0;
+  color:var(--vino);
+  border:1px solid #eadde0;
 }
 
-.menu-activo{
+.menu-principal button.menu-activo{
   background:var(--vino) !important;
   color:white !important;
+  border:1px solid var(--vino);
 }
 
 
