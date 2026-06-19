@@ -74,13 +74,18 @@ function iniciarMisaHoy(){
 
   document.getElementById("presentacionMisa").style.display = "block";
 
+setTimeout(() => {
+  const presentacion = document.getElementById("presentacionMisa");
+  presentacion.scrollIntoView({
+    behavior: "auto",
+    block: "start"
+  });
+}, 200);
+
 document.querySelector(".encabezado").style.display = "none";
 document.querySelector(".menu-principal").style.display = "none";
 
-window.scrollTo({
-  top: 0,
-  behavior: "instant"
-});
+
 
   mostrarCantoMisa();
 }
