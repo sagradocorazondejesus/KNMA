@@ -32,6 +32,8 @@
   <section class="panel no-print">
     <input type="text" id="buscar" placeholder="Buscar canto...">
 
+<div id="pantallaCantos">
+
     <select id="filtroCategoria">
       <option value="">Todas las categorías</option>
       <option>Entrada</option>
@@ -57,6 +59,8 @@
       <option>Mariano</option>
     </select>
 
+</div>
+
 <button id="btnFavoritos" onclick="alternarVerFavoritos()">☆ Ver favoritos</button>
 
   </section>
@@ -67,6 +71,8 @@
     <div id="listaCantos" class="lista-scroll"></div>
   </section>
 
+<section id="pantallaMisa" class="panel no-print misa-panel">
+
 <section class="panel no-print misa-panel">
   <h2>🎵 Misa de Hoy</h2>
 
@@ -74,6 +80,7 @@
 
   <button onclick="guardarMisaHoy()">Guardar Misa de Hoy</button>
   <button onclick="iniciarMisaHoy()">▶ Iniciar Misa</button>
+</section>
 </section>
 
 <section id="presentacionMisa" class="panel misa-presentacion" style="display:none;">
