@@ -74,6 +74,13 @@ function iniciarMisaHoy(){
 
   document.getElementById("presentacionMisa").style.display = "block";
 
+document.getElementById("pantallaMisa").style.display = "none";
+document.getElementById("pantallaCantos").style.display = "none";
+document.getElementById("pantallaFavoritos").style.display = "none";
+
+document.querySelector(".encabezado").style.display = "none";
+document.querySelector(".menu-principal").style.display = "none";
+
 setTimeout(() => {
   const presentacion = document.getElementById("presentacionMisa");
   presentacion.scrollIntoView({
