@@ -1,8 +1,8 @@
 window.CANTOS_COMUNION = [
   {
     titulo: "El Señor nos invita ya",
-    categoria: "Comunion",
-    tiempo: "Ordinario",
+    categoria: "comunion",
+    tiempo: "ordinario",
     tono: "C",
     autor: "Kerigma",
     notas: "Canto de comunion",
