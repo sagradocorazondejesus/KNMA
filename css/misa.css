@@ -12,3 +12,38 @@
   color:var(--vino);
   margin-bottom:4px;
 }
+
+.misa-presentacion{
+  margin-top:15px;
+}
+
+.misa-cabecera{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.misa-cabecera button{
+  width:auto;
+  padding:8px 14px;
+}
+
+.misa-nav{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+
+.misa-nav button{
+  flex:1;
+}
+
+#misaMomento{
+  text-align:center;
+  color:var(--vino);
+}
+
+#misaContenido{
+  margin-top:10px;
+}
