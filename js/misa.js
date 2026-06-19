@@ -136,7 +136,13 @@ function cerrarPresentacionMisa(){
   document.querySelector(".encabezado").style.display = "block";
   document.querySelector(".menu-principal").style.display = "flex";
 
+
+if(document.fullscreenElement){
+  document.exitFullscreen();
+}
+
   mostrarPantalla("misa");
+
 }
 
 
