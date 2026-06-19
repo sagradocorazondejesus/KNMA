@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta property="og:title" content="Cantoral Kerigma X Ibarra Music">
-<meta property="og:description" content="Cantoral digital del ministerio de musica Kerigma, por Daniel Ibarra, Capilla de Nuestra Señora de Guadalupe, Ruiseñores, Tala, Jalisco.">
-<meta property="og:image" content="https://sagradocorazondejesus.github.io/KNMA/img/logo-kerigma.jpg">
-<meta property="og:type" content="website">
+  <meta property="og:description" content="Cantoral digital del ministerio de música Kerigma, por Daniel Ibarra, Capilla de Nuestra Señora de Guadalupe, Ruiseñores, Tala, Jalisco.">
+  <meta property="og:image" content="https://sagradocorazondejesus.github.io/KNMA/img/logo-kerigma.jpg">
+  <meta property="og:type" content="website">
+
   <title>Cantoral Kerigma</title>
-<link rel="icon" type="image/jpeg" href="https://sagradocorazondejesus.github.io/KNMA/img/logo-kerigma.jpg">
+  <link rel="icon" type="image/jpeg" href="https://sagradocorazondejesus.github.io/KNMA/img/logo-kerigma.jpg">
 
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/misa.css">
 </head>
+
 <body>
 
 <header class="encabezado">
@@ -29,101 +32,102 @@
 
 <main class="contenedor">
 
-  <section class="panel no-print">
-    <input type="text" id="buscar" placeholder="Buscar canto...">
+  <div id="pantallaCantos">
 
-<div id="pantallaCantos">
+    <section class="panel no-print">
+      <input type="text" id="buscar" placeholder="Buscar canto...">
 
-    <select id="filtroCategoria">
-      <option value="">Todas las categorías</option>
-      <option>Entrada</option>
-      <option>Kyrie</option>
-      <option>Gloria</option>
-      <option>Aleluya</option>
-      <option>Ofertorio</option>
-      <option>Santo</option>
-      <option>Cordero</option>
-      <option>Comunion</option>
-      <option>Salida</option>
-      <option>Marianos</option>
-      <option>Otros</option>
-    </select>
+      <select id="filtroCategoria">
+        <option value="">Todas las categorías</option>
+        <option>Entrada</option>
+        <option>Kyrie</option>
+        <option>Gloria</option>
+        <option>Aleluya</option>
+        <option>Ofertorio</option>
+        <option>Santo</option>
+        <option>Cordero</option>
+        <option>Comunion</option>
+        <option>Salida</option>
+        <option>Marianos</option>
+        <option>Otros</option>
+      </select>
 
-    <select id="filtroTiempo">
-      <option value="">Todos los tiempos</option>
-      <option>Adviento</option>
-      <option>Navidad</option>
-      <option>Cuaresma</option>
-      <option>Pascua</option>
-      <option>Ordinario</option>
-      <option>Mariano</option>
-    </select>
+      <select id="filtroTiempo">
+        <option value="">Todos los tiempos</option>
+        <option>Adviento</option>
+        <option>Navidad</option>
+        <option>Cuaresma</option>
+        <option>Pascua</option>
+        <option>Ordinario</option>
+        <option>Mariano</option>
+      </select>
 
-</div>
+      <button id="btnFavoritos" onclick="alternarVerFavoritos()">☆ Ver favoritos</button>
+    </section>
 
-<button id="btnFavoritos" onclick="alternarVerFavoritos()">☆ Ver favoritos</button>
+    <section class="panel no-print">
+      <h2>Cantos</h2>
+      <p id="contadorCantos" class="contador-cantos"></p>
+      <div id="listaCantos" class="lista-scroll"></div>
+    </section>
 
-  </section>
+    <section class="panel canto">
 
-  <section class="panel no-print">
-    <h2>Cantos</h2>
-    <p id="contadorCantos" class="contador-cantos"></p>
-    <div id="listaCantos" class="lista-scroll"></div>
-  </section>
+      <div class="botones no-print">
+        <button onclick="cambiarTono(-1)">-1</button>
+        <button onclick="tonoOriginal()">Original</button>
+        <button onclick="cambiarTono(1)">+1</button>
+      </div>
 
-<section id="pantallaMisa" class="panel no-print misa-panel">
+      <div class="botones no-print">
+        <button onclick="cambiarSistema()">Letras / Do Re Mi</button>
+        <button onclick="cambiarLetra(-1)">A-</button>
+        <button onclick="cambiarLetra(1)">A+</button>
+        <button id="btnAcordes" onclick="alternarAcordes()">Acordes ON</button>
+      </div>
 
-<section class="panel no-print misa-panel">
-  <h2>🎵 Misa de Hoy</h2>
+      <button class="no-print" id="btnMarcarFavorito" onclick="marcarFavorito()">☆ Agregar a favoritos</button>
 
-  <div id="selectoresMisa"></div>
+      <h2 id="tituloCanto">Selecciona un canto</h2>
+      <div id="datosCanto"></div>
+      <p id="tonoActual"></p>
+      <div id="letraCanto" class="letra"></div>
 
-  <button onclick="guardarMisaHoy()">Guardar Misa de Hoy</button>
-  <button onclick="iniciarMisaHoy()">▶ Iniciar Misa</button>
-</section>
-</section>
+      <button class="no-print imprimir" onclick="window.print()">Imprimir / Guardar PDF</button>
+    </section>
 
-<section id="presentacionMisa" class="panel misa-presentacion" style="display:none;">
-
-  <div class="misa-cabecera">
-    <span id="misaContador">1 / 1</span>
-    <button onclick="cerrarPresentacionMisa()">✕ Salir</button>
   </div>
 
-  <h2 id="misaMomento"></h2>
+  <section id="pantallaFavoritos" class="panel no-print" style="display:none;">
+    <h2>⭐ Favoritos</h2>
+    <div id="listaFavoritos"></div>
+  </section>
 
-  <div id="misaContenido"></div>
+  <section id="pantallaMisa" class="panel no-print misa-panel" style="display:none;">
+    <h2>🎵 Misa de Hoy</h2>
 
-  <div class="misa-nav">
-    <button onclick="cantoAnterior()">◀ Anterior</button>
-    <button onclick="cantoSiguiente()">Siguiente ▶</button>
-  </div>
+    <div id="selectoresMisa"></div>
 
-</section>
+    <button onclick="guardarMisaHoy()">Guardar Misa de Hoy</button>
+    <button onclick="iniciarMisaHoy()">▶ Iniciar Misa</button>
+  </section>
 
-  <section class="panel canto">
+  <section id="presentacionMisa" class="panel misa-presentacion" style="display:none;">
 
-    <div class="botones no-print">
-      <button onclick="cambiarTono(-1)">-1</button>
-      <button onclick="tonoOriginal()">Original</button>
-      <button onclick="cambiarTono(1)">+1</button>
+    <div class="misa-cabecera">
+      <span id="misaContador">1 / 1</span>
+      <button onclick="cerrarPresentacionMisa()">✕ Salir</button>
     </div>
 
-    <div class="botones no-print">
-      <button onclick="cambiarSistema()">Letras / Do Re Mi</button>
-      <button onclick="cambiarLetra(-1)">A-</button>
-      <button onclick="cambiarLetra(1)">A+</button>
-      <button id="btnAcordes" onclick="alternarAcordes()">Acordes ON</button>
+    <h2 id="misaMomento"></h2>
+
+    <div id="misaContenido"></div>
+
+    <div class="misa-nav">
+      <button onclick="cantoAnterior()">◀ Anterior</button>
+      <button onclick="cantoSiguiente()">Siguiente ▶</button>
     </div>
 
-    <button class="no-print" id="btnMarcarFavorito" onclick="marcarFavorito()">☆ Agregar a favoritos</button>
-
-    <h2 id="tituloCanto">Selecciona un canto</h2>
-    <div id="datosCanto"></div>
-    <p id="tonoActual"></p>
-    <div id="letraCanto" class="letra"></div>
-
-    <button class="no-print imprimir" onclick="window.print()">Imprimir / Guardar PDF</button>
   </section>
 
 </main>
