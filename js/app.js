@@ -258,5 +258,49 @@ function alternarAcordes(){
 
 
 
+function mostrarPantalla(pantalla){
+  document.getElementById("pantallaCantos").style.display = "none";
+  document.getElementById("pantallaFavoritos").style.display = "none";
+  document.getElementById("pantallaMisa").style.display = "none";
 
+  if(pantalla === "cantos"){
+    document.getElementById("pantallaCantos").style.display = "block";
+  }
+
+  if(pantalla === "favoritos"){
+    document.getElementById("pantallaFavoritos").style.display = "block";
+    cargarFavoritosPantalla();
+  }
+
+  if(pantalla === "misa"){
+    document.getElementById("pantallaMisa").style.display = "block";
+  }
+}
+
+function cargarFavoritosPantalla(){
+  const contenedor = document.getElementById("listaFavoritos");
+  contenedor.innerHTML = "";
+
+  const cantosFav = TODOS_LOS_CANTOS.filter(canto =>
+    favoritos.includes(canto.titulo)
+  );
+
+  if(cantosFav.length === 0){
+    contenedor.innerHTML = "<p>No tienes favoritos todavía.</p>";
+    return;
+  }
+
+  cantosFav.forEach(canto => {
+    const index = TODOS_LOS_CANTOS.indexOf(canto);
+
+    contenedor.innerHTML += `
+      <div class="lista-item" onclick="seleccionarCanto(${index}); mostrarPantalla('cantos');">
+        <div class="lista-titulo">★ ${canto.titulo}</div>
+        <small>${canto.categoria} · ${canto.tiempo} · Tono: ${canto.tono}</small>
+      </div>
+    `;
+  });
+}
+
+mostrarPantalla("cantos");
 
