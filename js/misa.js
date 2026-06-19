@@ -143,3 +143,35 @@ function convertirLetraMisa(letra){
 
   return html;
 }
+
+
+
+
+
+let toqueInicioX = 0;
+let toqueInicioY = 0;
+
+const presentacion = document.getElementById("presentacionMisa");
+
+if(presentacion){
+  presentacion.addEventListener("touchstart", function(e){
+    toqueInicioX = e.touches[0].clientX;
+    toqueInicioY = e.touches[0].clientY;
+  });
+
+  presentacion.addEventListener("touchend", function(e){
+    const toqueFinX = e.changedTouches[0].clientX;
+    const toqueFinY = e.changedTouches[0].clientY;
+
+    const diferenciaX = toqueFinX - toqueInicioX;
+    const diferenciaY = toqueFinY - toqueInicioY;
+
+    if(Math.abs(diferenciaX) > 70 && Math.abs(diferenciaX) > Math.abs(diferenciaY)){
+      if(diferenciaX < 0){
+        cantoSiguiente();
+      }else{
+        cantoAnterior();
+      }
+    }
+  });
+}
