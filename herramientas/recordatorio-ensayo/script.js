@@ -64,11 +64,11 @@ const estilosImagen = [
 ];
 
 const estilosTexto = [
-  { nombre: "Cálido" },
-  { nombre: "Breve" },
+  { nombre: "Marco elegante" },
+  { nombre: "Marco sencillo" },
   { nombre: "Juvenil" },
-  { nombre: "Formal" },
   { nombre: "Espiritual" },
+  { nombre: "Minimalista" },
   { nombre: "Sin emojis" }
 ];
 
