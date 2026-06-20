@@ -11,13 +11,7 @@
 <div class="app">
   <section class="panel">
     <h1>🎵 Recordatorio de Ensayo</h1>
-    <p>Crea una imagen para compartir con el coro.</p>
-
-    <label>Cita bíblica</label>
-    <textarea id="cita">Canten al Señor un cántico nuevo,
-porque ha hecho maravillas.
-
-Salmo 98:1</textarea>
+    <p>Genera imagen o texto para WhatsApp.</p>
 
     <label>Fecha</label>
     <input id="fecha" value="Hoy viernes" />
@@ -28,15 +22,35 @@ Salmo 98:1</textarea>
     <label>Lugar</label>
     <input id="lugar" value="Salón parroquial" />
 
-    <h3>Elige un estilo</h3>
-    <div id="estilos" class="estilos"></div>
+    <label>Cita bíblica</label>
+    <textarea id="cita">Canten al Señor un cántico nuevo,
+porque ha hecho maravillas.
 
-    <button onclick="generarImagen()">Generar imagen</button>
-    <button onclick="descargarImagen()" class="secundario">Descargar</button>
+Salmo 98, 1</textarea>
+
+    <label>Mensaje final</label>
+    <input id="fraseFinal" value="¡Tu presencia hace la diferencia! 🎶" />
+
+    <h3>Estilo de imagen</h3>
+    <div id="estilosImagen" class="opciones"></div>
+
+    <h3>Formato de texto</h3>
+    <div id="estilosTexto" class="opciones"></div>
+
+    <button onclick="generarTodo()">Actualizar</button>
+    <button onclick="descargarImagen()" class="secundario">Descargar imagen</button>
+    <button onclick="copiarTexto()" class="whatsapp">Copiar texto WhatsApp</button>
   </section>
 
-  <section class="preview">
-    <canvas id="canvas" width="1080" height="1920"></canvas>
+  <section class="salida">
+    <div class="preview">
+      <canvas id="canvas" width="1080" height="1920"></canvas>
+    </div>
+
+    <div class="texto-box">
+      <h2>Mensaje para WhatsApp</h2>
+      <textarea id="mensajeWhatsApp" readonly></textarea>
+    </div>
   </section>
 </div>
 
