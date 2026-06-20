@@ -212,3 +212,25 @@ if(presentacion){
     }
   });
 }
+
+function compartirProximaMisa(){
+  guardarMisaHoy();
+
+  let texto = "🎵 *Próxima Misa*%0A%0A";
+
+  MOMENTOS_MISA.forEach(momento => {
+    const titulo = misaHoy[momento];
+
+    if(titulo){
+      const canto = TODOS_LOS_CANTOS.find(c => c.titulo === titulo);
+      const tono = canto ? canto.tono : "";
+
+      texto += `*${momento}:*%0A`;
+      texto += `${titulo}${tono ? " (" + tono + ")" : ""}%0A%0A`;
+    }
+  });
+
+  texto += "Kerigma - Nuevo Milagro de Amor";
+
+  window.open(`https://wa.me/?text=${texto}`, "_blank");
+}
