@@ -44,7 +44,42 @@ pre{
   overflow:auto;
   white-space:pre-wrap;
 }
-</style></head><body><h1>🎵 Agregar Canto</h1><input id="titulo" placeholder="Título"><select id="categoria">
+
+.preview{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+.seccion{
+  color:#7b1020;
+  font-weight:bold;
+  margin:18px 0 8px;
+  border-bottom:1px solid #eadde0;
+}
+
+.linea{
+  font-family:"Courier New", monospace;
+  margin-bottom:8px;
+}
+
+.acordes{
+  color:#7b1020;
+  font-weight:bold;
+  white-space:pre;
+  line-height:1;
+}
+
+.letra{
+  white-space:pre-wrap;
+  line-height:1.15;
+}
+
+</style>
+
+</head><body><h1>🎵 Agregar Canto</h1>
+<input id="titulo" placeholder="Título"><select id="categoria">
   <option>Entrada</option>
   <option>Kyrie</option>
   <option>Gloria</option>
@@ -65,9 +100,18 @@ pre{
   <option>Mariano</option>
 </select><input id="tono" placeholder="Tono (Ej: G)">
 <input id="autor" placeholder="Autor">
-<input id="notas" placeholder="Notas"><textarea id="letra" placeholder="Pega aquí la letra y acordes"></textarea><button onclick="generar()">Generar código</button>
+<input id="notas" placeholder="Notas"><textarea id="letra" placeholder="Pega aquí la letra y acordes"></textarea>
 
-<h2>Resultado</h2><pre id="resultado"></pre><script>
+<button onclick="generar()">Generar código</button>
+<button onclick="vistaPrevia()">👁 Vista previa</button>
+
+<h2>Resultado</h2>
+<pre id="resultado"></pre>
+
+<h2>Vista previa</h2>
+<div id="preview" class="preview"></div>
+
+<script>
 function generar(){
 
   const titulo = document.getElementById("titulo").value;
@@ -91,5 +135,78 @@ ${letra}
 \`
 },`;
 }
-</script></body>
+
+function vistaPrevia(){
+  const letra = document.getElementById("letra").value;
+  const preview = document.getElementById("preview");
+
+  preview.innerHTML = "";
+
+  letra.trim().split("\n").forEach(linea => {
+    const limpia = linea.trim();
+
+    if(limpia === ""){
+      preview.innerHTML += "<br>";
+      return;
+    }
+
+    if(/^\[[^\]]+\]$/.test(limpia) && !esAcorde(limpia.slice(1, -1))){
+      preview.innerHTML += `<div class="seccion">${limpia}</div>`;
+      return;
+    }
+
+    preview.innerHTML += `<div class="linea">${convertirLineaPreview(linea)}</div>`;
+  });
+}
+
+function esAcorde(texto){
+  return /^[A-G](#|b)?(m|maj|min|dim|aug|sus|add)?[0-9]*(\/[A-G](#|b)?)?$/.test(texto);
+}
+
+function convertirLineaPreview(linea){
+  let textoVisible = "";
+  let acordesPorPosicion = {};
+  let posicion = 0;
+  let i = 0;
+
+  while(i < linea.length){
+    if(linea[i] === "["){
+      const cierre = linea.indexOf("]", i);
+
+      if(cierre !== -1){
+        const acorde = linea.substring(i + 1, cierre);
+
+        if(esAcorde(acorde)){
+          acordesPorPosicion[posicion] = acorde;
+          i = cierre + 1;
+          continue;
+        }
+      }
+    }
+
+    textoVisible += linea[i];
+    posicion++;
+    i++;
+  }
+
+  let lineaAcordes = "";
+
+  for(let j = 0; j <= textoVisible.length; j++){
+    if(acordesPorPosicion[j]){
+      lineaAcordes += acordesPorPosicion[j];
+      j += acordesPorPosicion[j].length - 1;
+    }else{
+      lineaAcordes += " ";
+    }
+  }
+
+  return `
+    <div class="acordes">${lineaAcordes}</div>
+    <div class="letra">${textoVisible}</div>
+  `;
+}
+
+</script>
+
+</body>
 </html>
