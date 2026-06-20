@@ -7,21 +7,6 @@ window.CANTOS_COMUNION = [
     autor: "Kerigma",
     notas: "Canto de comunion",
     letra:`
-{
-  titulo: "Aleluya",
-  categoria: "Aleluya",
-  tiempo: "Ordinario",
-  tono: "D",
-  autor: "Keeigma",
-  notas: "Aleluya",
-  letra:`
-Aleluya 
-Aleluya
-123
-`
-},
-
-{
 [coro]
 E[D]l señ[Bm]or n[Em]os invita y[A7]a
 c[D]on am[Bm]or s[Em]u cuerpo a com[A7]ulgar,
@@ -53,8 +38,45 @@ C[D]ome el c[Bm]uerpo d[Em]el señ[A7]or,
 [D]Es t[Bm]estimoni[Em]o de am[A7]or
 [D]Es b[Bm]anquete f[Em]amili[A7]ar.
 
-}
+`
+{
+  titulo: "Es mi cierpo",
+  categoria: "Comunion",
+  tiempo: "Ordinario",
+  tono: "D",
+  autor: "Kerigma",
+  notas: "Canto de comunion",
+  letra:`
+[coro]
+[D]Es mi c[Bm]uerpo t[Em]omad y c[A7]omed
+[D]Es mi s[Bm]angre t[Em]omad y beb[A7]éd
+Por qué y[D]o soy v[Bm]ida y[G]o soy am[D]or
+¡Oh! Señ[D]or nos reunir[A7]emos
+en tu am[D]or
+
+[verso 1]
+El Señ[D]or nos da su amor
+Cómo n[G]adie nos lo d[D]ío
+El nos guía como estrella
+En la inm[A7]ensa oscuridad
+Al part[D]ir juntos el pan
+El nos ll[G]ena de su am[D]or
+Pan de Dios el pan com[A7]amos
+de amist[D]ad
+
+[verso 2]
+El Señ[D]or nos da su amor
+Cómo n[G]adie nos lo di[D]ó
+Cómo todos sus amigos
+Trabaj[A7]aba en Nazareth
+Carpint[D]ero se alegro
+Trabaj[G]ando en su tall[D]er
+Con sus manos Cristo obr[A7]ero
+Trabaj[D]o
 
 
-`
+
+`
+},
+
 ];
