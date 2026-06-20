@@ -1,1 +1,127 @@
-2
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f4f1f8;
+  color: #272333;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 22px;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.panel,
+.preview {
+  background: white;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 10px 30px #0001;
+}
+
+h1 {
+  margin: 0;
+  color: #552582;
+}
+
+p {
+  color: #666;
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 700;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid #d7c7ef;
+  border-radius: 14px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.estilos {
+  display: grid;
+  gap: 10px;
+}
+
+.estilo {
+  border: 2px solid #eee;
+  border-radius: 15px;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.estilo.activo {
+  border-color: #7b3fd3;
+  background: #f4ecff;
+}
+
+.mini {
+  width: 58px;
+  height: 42px;
+  border-radius: 10px;
+}
+
+button {
+  width: 100%;
+  margin-top: 18px;
+  border: none;
+  border-radius: 15px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
+  background: #7b3fd3;
+}
+
+button.secundario {
+  background: #2f2f3a;
+}
+
+canvas {
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px #0002;
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 850px) {
+  .app {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .panel,
+  .preview {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
