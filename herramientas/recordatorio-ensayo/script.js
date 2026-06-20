@@ -3,9 +3,10 @@ const logoUrl = "https://sagradocorazondejesus.github.io/KNMA/img/logo-kerigma.j
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-let estiloActual = 0;
+let estiloImagenActual = 0;
+let estiloTextoActual = 0;
 
-const estilos = [
+const estilosImagen = [
   {
     nombre: "Kerigma vino",
     fondo1: "#f7dce5",
@@ -59,48 +60,61 @@ const estilos = [
     texto2: "#7c5ac8",
     tarjeta: "#fbf8ff",
     decoracion: "#b9a3ef"
-  },
-  {
-    nombre: "Acuarela",
-    fondo1: "#e5fff0",
-    fondo2: "#7abf91",
-    texto: "#236343",
-    texto2: "#6ba87c",
-    tarjeta: "#fbfffb",
-    decoracion: "#b7dfc1"
-  },
-  {
-    nombre: "Noche musical",
-    fondo1: "#07111f",
-    fondo2: "#263d7a",
-    texto: "#13213f",
-    texto2: "#355083",
-    tarjeta: "#f8fbff",
-    decoracion: "#9caed8"
   }
 ];
 
-function cargarEstilos() {
-  const contenedor = document.getElementById("estilos");
-  contenedor.innerHTML = "";
+const estilosTexto = [
+  { nombre: "Cálido" },
+  { nombre: "Breve" },
+  { nombre: "Juvenil" },
+  { nombre: "Formal" },
+  { nombre: "Espiritual" },
+  { nombre: "Sin emojis" }
+];
 
-  estilos.forEach((e, i) => {
+function cargarOpciones() {
+  const contImagen = document.getElementById("estilosImagen");
+  contImagen.innerHTML = "";
+
+  estilosImagen.forEach((e, i) => {
     const div = document.createElement("div");
-    div.className = "estilo" + (i === estiloActual ? " activo" : "");
+    div.className = "opcion" + (i === estiloImagenActual ? " activo" : "");
     div.innerHTML = `
       <div class="mini" style="background:linear-gradient(135deg,${e.fondo1},${e.fondo2})"></div>
-      <div>
-        <strong>Estilo ${i + 1}</strong><br>
-        <small>${e.nombre}</small>
-      </div>
+      <div><strong>Estilo ${i + 1}</strong><br><small>${e.nombre}</small></div>
     `;
     div.onclick = () => {
-      estiloActual = i;
-      cargarEstilos();
-      generarImagen();
+      estiloImagenActual = i;
+      cargarOpciones();
+      generarTodo();
     };
-    contenedor.appendChild(div);
+    contImagen.appendChild(div);
   });
+
+  const contTexto = document.getElementById("estilosTexto");
+  contTexto.innerHTML = "";
+
+  estilosTexto.forEach((e, i) => {
+    const div = document.createElement("div");
+    div.className = "opcion" + (i === estiloTextoActual ? " activo" : "");
+    div.innerHTML = `<strong>${e.nombre}</strong>`;
+    div.onclick = () => {
+      estiloTextoActual = i;
+      cargarOpciones();
+      generarTodo();
+    };
+    contTexto.appendChild(div);
+  });
+}
+
+function datos() {
+  return {
+    fecha: document.getElementById("fecha").value.trim(),
+    hora: document.getElementById("hora").value.trim(),
+    lugar: document.getElementById("lugar").value.trim(),
+    cita: document.getElementById("cita").value.trim(),
+    fraseFinal: document.getElementById("fraseFinal").value.trim()
+  };
 }
 
 function roundRect(x, y, w, h, r) {
@@ -119,7 +133,7 @@ function roundRect(x, y, w, h, r) {
 
 function envolverTexto(texto, maxWidth) {
   const parrafos = texto.split("\n");
-  const lineasFinales = [];
+  const lineas = [];
 
   parrafos.forEach(parrafo => {
     const palabras = parrafo.split(" ");
@@ -128,43 +142,39 @@ function envolverTexto(texto, maxWidth) {
     palabras.forEach(palabra => {
       const prueba = linea + palabra + " ";
       if (ctx.measureText(prueba).width > maxWidth && linea !== "") {
-        lineasFinales.push(linea.trim());
+        lineas.push(linea.trim());
         linea = palabra + " ";
       } else {
         linea = prueba;
       }
     });
 
-    if (linea.trim() !== "") lineasFinales.push(linea.trim());
-    lineasFinales.push("");
+    if (linea.trim()) lineas.push(linea.trim());
+    lineas.push("");
   });
 
-  if (lineasFinales[lineasFinales.length - 1] === "") lineasFinales.pop();
-  return lineasFinales;
+  if (lineas[lineas.length - 1] === "") lineas.pop();
+  return lineas;
 }
 
-function dibujarLineas(lineas, x, y, lineHeight) {
+function dibujarLineas(lineas, x, y, altoLinea) {
   lineas.forEach(linea => {
     if (linea === "") {
-      y += lineHeight * 0.45;
+      y += altoLinea * 0.45;
     } else {
       ctx.fillText(linea, x, y);
-      y += lineHeight;
+      y += altoLinea;
     }
   });
 }
 
 function generarImagen() {
-  const estilo = estilos[estiloActual];
-
-  const cita = document.getElementById("cita").value.trim();
-  const fecha = document.getElementById("fecha").value.trim();
-  const hora = document.getElementById("hora").value.trim();
-  const lugar = document.getElementById("lugar").value.trim();
+  const e = estilosImagen[estiloImagenActual];
+  const d = datos();
 
   const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  grad.addColorStop(0, estilo.fondo1);
-  grad.addColorStop(1, estilo.fondo2);
+  grad.addColorStop(0, e.fondo1);
+  grad.addColorStop(1, e.fondo2);
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -172,22 +182,17 @@ function generarImagen() {
   roundRect(70, 80, 940, 1760, 60);
   ctx.fill();
 
-  ctx.fillStyle = "rgba(255,255,255,0.55)";
-  roundRect(105, 115, 870, 1690, 46);
-  ctx.fill();
-
-  ctx.fillStyle = estilo.decoracion;
+  ctx.fillStyle = e.decoracion;
   ctx.globalAlpha = 0.22;
-  ctx.font = "90px serif";
-  ctx.fillText("♪", 805, 260);
-  ctx.fillText("♫", 855, 335);
-  ctx.fillText("♬", 760, 410);
+  ctx.font = "95px serif";
+  ctx.fillText("♪", 790, 250);
+  ctx.fillText("♫", 860, 350);
+  ctx.fillText("♬", 740, 430);
   ctx.globalAlpha = 1;
 
   const logo = new Image();
   logo.crossOrigin = "anonymous";
   logo.src = logoUrl;
-
   logo.onload = () => {
     ctx.save();
     ctx.beginPath();
@@ -203,75 +208,153 @@ function generarImagen() {
     ctx.stroke();
   };
 
-  ctx.fillStyle = estilo.texto;
+  ctx.fillStyle = e.texto;
   ctx.font = "900 92px system-ui";
   ctx.fillText("ENSAYO", 405, 245);
 
-  ctx.fillStyle = estilo.texto2;
+  ctx.fillStyle = e.texto2;
   ctx.font = "800 58px system-ui";
   ctx.fillText("DEL CORO", 410, 320);
 
-  const infoX = 145;
-  let infoY = 520;
+  let y = 520;
+  const x = 145;
 
-  ctx.fillStyle = estilo.texto;
+  ctx.fillStyle = e.texto;
   ctx.font = "bold 38px system-ui";
-
-  ctx.fillText("📅", infoX, infoY);
-  ctx.fillText("Fecha:", infoX + 70, infoY);
+  ctx.fillText("📅 Fecha:", x, y);
   ctx.font = "38px system-ui";
-  ctx.fillText(fecha, infoX + 215, infoY);
+  ctx.fillText(d.fecha, x + 210, y);
 
-  infoY += 85;
+  y += 85;
   ctx.font = "bold 38px system-ui";
-  ctx.fillText("🕖", infoX, infoY);
-  ctx.fillText("Hora:", infoX + 70, infoY);
+  ctx.fillText("🕖 Hora:", x, y);
   ctx.font = "38px system-ui";
-  ctx.fillText(hora, infoX + 190, infoY);
+  ctx.fillText(d.hora, x + 190, y);
 
-  infoY += 85;
+  y += 85;
   ctx.font = "bold 38px system-ui";
-  ctx.fillText("📍", infoX, infoY);
-  ctx.fillText("Lugar:", infoX + 70, infoY);
-
+  ctx.fillText("📍 Lugar:", x, y);
   ctx.font = "36px system-ui";
-  const lugarLineas = envolverTexto(lugar, 650);
-  dibujarLineas(lugarLineas, infoX + 70, infoY + 58, 46);
+  const lugarLineas = envolverTexto(d.lugar, 690);
+  dibujarLineas(lugarLineas, x + 55, y + 60, 46);
 
   ctx.font = "44px Georgia, serif";
-  const citaLineas = envolverTexto(cita, 720);
+  const citaLineas = envolverTexto(d.cita, 720);
+  const altoLinea = 62;
+  const altoCita = Math.max(360, citaLineas.length * altoLinea + 210);
+  const citaY = 1630 - altoCita;
 
-  const lineHeight = 62;
-  const citaAlto = Math.max(390, citaLineas.length * lineHeight + 210);
-  const citaY = 1630 - citaAlto;
-
-  ctx.fillStyle = estilo.tarjeta;
-  roundRect(115, citaY, 850, citaAlto, 44);
+  ctx.fillStyle = e.tarjeta;
+  roundRect(115, citaY, 850, altoCita, 44);
   ctx.fill();
 
-  ctx.strokeStyle = estilo.texto;
+  ctx.strokeStyle = e.texto;
   ctx.lineWidth = 4;
-  roundRect(115, citaY, 850, citaAlto, 44);
+  roundRect(115, citaY, 850, altoCita, 44);
   ctx.stroke();
 
-  ctx.fillStyle = estilo.decoracion;
-  ctx.globalAlpha = 0.35;
-  ctx.font = "90px serif";
-  ctx.fillText("❦", 770, citaY + citaAlto - 70);
-  ctx.globalAlpha = 1;
-
-  ctx.fillStyle = estilo.texto;
+  ctx.fillStyle = e.texto;
   ctx.font = "bold 72px Georgia, serif";
   ctx.fillText("“", 165, citaY + 105);
 
   ctx.font = "44px Georgia, serif";
-  dibujarLineas(citaLineas, 170, citaY + 190, lineHeight);
+  dibujarLineas(citaLineas, 170, citaY + 190, altoLinea);
 
-  ctx.fillStyle = estilo.texto;
   ctx.textAlign = "center";
   ctx.font = "bold 38px system-ui";
-  ctx.fillText("¡Tu presencia hace la diferencia! 🎶", 540, 1755);
+  ctx.fillText(d.fraseFinal, 540, 1755);
   ctx.textAlign = "left";
+}
+
+function generarTexto() {
+  const d = datos();
+  let texto = "";
+
+  switch (estiloTextoActual) {
+    case 0:
+      texto =
+`🎵 *Recordatorio de ensayo*
+
+Hola familia Kerigma 😊
+
+Nos vemos ${d.fecha} a las *${d.hora}* en *${d.lugar}*.
+
+📖 _“${d.cita}”_
+
+${d.fraseFinal}`;
+      break;
+
+    case 1:
+      texto =
+`🎵 *Ensayo Kerigma*
+
+${d.fecha}
+🕖 ${d.hora}
+📍 ${d.lugar}
+
+📖 _${d.cita}_
+
+${d.fraseFinal}`;
+      break;
+
+    case 2:
+      texto =
+`🎶 *¡Hoy toca ensayo!*
+
+Familia Kerigma, nos vemos ${d.fecha} a las *${d.hora}*.
+
+📍 *Lugar:* ${d.lugar}
+
+📖 _${d.cita}_
+
+¡Ánimo! Nos vemos al ratito 😄`;
+      break;
+
+    case 3:
+      texto =
+`*Recordatorio de ensayo*
+
+Se les recuerda que tendremos ensayo ${d.fecha} a las *${d.hora}* en *${d.lugar}*.
+
+Cita bíblica:
+_${d.cita}_
+
+${d.fraseFinal}`;
+      break;
+
+    case 4:
+      texto =
+`🎵 *Recordatorio de ensayo*
+
+Antes de cantar, preparemos también el corazón.
+
+📖 _${d.cita}_
+
+Nos vemos ${d.fecha} a las *${d.hora}* en *${d.lugar}*.
+
+${d.fraseFinal}`;
+      break;
+
+    case 5:
+      texto =
+`*Recordatorio de ensayo*
+
+Hola familia Kerigma.
+
+Nos vemos ${d.fecha} a las *${d.hora}* en *${d.lugar}*.
+
+_${d.cita}_
+
+${d.fraseFinal}`;
+      break;
+  }
+
+  document.getElementById("mensajeWhatsApp").value = texto;
+}
+
+function generarTodo() {
+  generarImagen();
+  generarTexto();
 }
 
 function descargarImagen() {
@@ -285,5 +368,17 @@ function descargarImagen() {
   }, 400);
 }
 
-cargarEstilos();
-generarImagen();
+function copiarTexto() {
+  const texto = document.getElementById("mensajeWhatsApp");
+  texto.select();
+  texto.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(texto.value);
+  alert("Texto copiado para WhatsApp");
+}
+
+document.querySelectorAll("input, textarea").forEach(el => {
+  el.addEventListener("input", generarTodo);
+});
+
+cargarOpciones();
+generarTodo();
