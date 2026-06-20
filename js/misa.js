@@ -216,7 +216,7 @@ if(presentacion){
 function compartirProximaMisa(){
   guardarMisaHoy();
 
-  let texto = "🎵 *Próxima Misa*%0A%0A";
+  let mensaje = "🎵 *Próxima Misa*\n\n";
 
   MOMENTOS_MISA.forEach(momento => {
     const titulo = misaHoy[momento];
@@ -225,12 +225,14 @@ function compartirProximaMisa(){
       const canto = TODOS_LOS_CANTOS.find(c => c.titulo === titulo);
       const tono = canto ? canto.tono : "";
 
-      texto += `*${momento}:*%0A`;
-      texto += `${titulo}${tono ? " (" + tono + ")" : ""}%0A%0A`;
+      mensaje += `*${momento}:*\n`;
+      mensaje += `${titulo}${tono ? " (" + tono + ")" : ""}\n\n`;
     }
   });
 
-  texto += "Kerigma - Nuevo Milagro de Amor";
+  mensaje += "Kerigma - Nuevo Milagro de Amor";
+
+  const texto = encodeURIComponent(mensaje);
 
   window.open(`https://wa.me/?text=${texto}`, "_blank");
 }
