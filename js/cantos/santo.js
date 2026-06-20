@@ -9,10 +9,10 @@ window.CANTOS_SANTO = [
     letra:`
 [C#m] [C#m]
 
-S[C#7]ant[F#m]o, s[B7]mant[E]o, s[A]anto
+S[C#7]ant[F#m]o, s[B7]ant[E]o, s[A]anto
 es el Señ[F#m]or Dios del [G#7]univ[C#m]erso
 ll[C#7]enos est[F#m]án el c[B7]ielo y la t[E]ierra 
-d[A]e tu gl[F#]moria hos[G#7]ann[C#m]a 
+d[A]e tu gl[F#]oria hos[G#7]ann[C#m]a 
 
 H[C#7]osann[F#m]a, h[B7]osann[E]a, h[A]osann[F#m]a 
 [G#7]en el c[C#m]ielo 
@@ -27,8 +27,7 @@ hos[G#7]ann[C#m]a.
 H[C#7]osann[F#m]a, h[B7]osann[E]a, h[A]osann[F#m]a 
 [G#7]en el c[C#m]ielo 
 H[C#7]osann[F#m]a, h[B7]osann[E]a, h[A]osann[F#m]a 
-[G#7]en el c[C#m]ielo   
-en el cielo. 
+[G#7]en el c[C#m]ielo. 
 
 `
   }
