@@ -103,6 +103,9 @@ pre{
 <input id="notas" placeholder="Notas"><textarea id="letra" placeholder="Pega aquí la letra y acordes"></textarea>
 
 <button onclick="generar()">Generar código</button>
+<button onclick="copiarCodigo()">
+📋 Copiar código
+</button>
 <button onclick="vistaPrevia()">👁 Vista previa</button>
 
 <h2>Resultado</h2>
@@ -204,6 +207,25 @@ function convertirLineaPreview(linea){
     <div class="acordes">${lineaAcordes}</div>
     <div class="letra">${textoVisible}</div>
   `;
+}
+
+function copiarCodigo(){
+
+  const texto =
+    document.getElementById("resultado").textContent;
+
+  if(!texto.trim()){
+    alert("Primero genera el código");
+    return;
+  }
+
+  navigator.clipboard.writeText(texto)
+    .then(() => {
+      alert("✅ Código copiado");
+    })
+    .catch(() => {
+      alert("No fue posible copiar");
+    });
 }
 
 </script>
