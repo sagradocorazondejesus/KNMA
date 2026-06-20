@@ -291,3 +291,24 @@ button{
   color:#666;
   font-size:14px;
 }
+
+.titulo-lista-cantos{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.titulo-lista-cantos h2{
+  margin:0;
+}
+
+.btn-expandir-lista{
+  width:auto;
+  padding:8px 12px;
+  border-radius:12px;
+}
+
+.lista-grande{
+  max-height:70vh !important;
+}
