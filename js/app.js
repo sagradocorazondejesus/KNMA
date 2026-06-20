@@ -311,3 +311,8 @@ function cargarFavoritosPantalla(){
 }
 
 mostrarPantalla("cantos");
+
+function alternarListaGrande(){
+  const lista = document.getElementById("listaCantos");
+  lista.classList.toggle("lista-grande");
+}
