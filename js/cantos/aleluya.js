@@ -1,6 +1,6 @@
 window.CANTOS_ALELUYA = [
 {
-  titulo: "Aleluya Busca Primero",
+  titulo: "Aleluya Busca Primero 2k",
   categoria: "Aleluya",
   tiempo: "Ordinario",
   tono: "D",
@@ -23,7 +23,7 @@ window.CANTOS_ALELUYA = [
 },
 
   {
-    titulo: "Aleluya miserere",
+    titulo: "Aleluya miserere 1k",
     categoria: "Aleluya",
     tiempo: "Ordinario",
     tono: "G",
