@@ -1,4 +1,23 @@
 window.CANTOS_KYRIE = [
+{
+  titulo: "Kyrie Em",
+  categoria: "Kyrie",
+  tiempo: "Ordinario",
+  tono: "Em",
+  autor: "Kerigma",
+  notas: "Canto del Kyie",
+  letra:`
+Señ[Em]or ten pied[Am]ad
+De no - [Em]so - [B7]o - tr[Em]os (2)
+
+Cr[G]isto ten pied[Am]ad
+De nos[Em]o - [B7]o - tr[Em]os (2)
+
+Señ[Em]or ten pied[Am]ad
+De no - [Em]so - [B7]o - tr[Em]os (2)
+`
+},
+
   {
     titulo: "Kyrie Am",
     categoria: "Kyrie",
