@@ -236,3 +236,96 @@ function compartirProximaMisa(){
 
   window.open(`https://wa.me/?text=${texto}`, "_blank");
 }
+
+
+
+
+
+
+async function compartirImagenProximaMisa(){
+  guardarMisaHoy();
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 1080;
+  canvas.height = 1350;
+
+  const ctx = canvas.getContext("2d");
+
+  // Fondo
+  ctx.fillStyle = "#f7f1ec";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Tarjeta
+  ctx.fillStyle = "#ffffff";
+  ctx.roundRect(60, 60, 960, 1230, 35);
+  ctx.fill();
+
+  // Logo
+  const logo = new Image();
+  logo.src = "img/logo-kerigma.jpg";
+
+  logo.onload = async function(){
+
+    ctx.drawImage(logo, 360, 90, 360, 160);
+
+    // Título
+    ctx.fillStyle = "#7b1020";
+    ctx.font = "bold 58px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Próxima Misa", 540, 330);
+
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "#555";
+    ctx.fillText("Kerigma - Nuevo Milagro de Amor", 540, 380);
+
+    // Lista
+    ctx.textAlign = "left";
+    ctx.font = "bold 34px Arial";
+
+    let y = 470;
+
+    MOMENTOS_MISA.forEach(momento => {
+      const titulo = misaHoy[momento];
+
+      if(titulo){
+        const canto = TODOS_LOS_CANTOS.find(c => c.titulo === titulo);
+        const tono = canto ? canto.tono : "";
+
+        ctx.fillStyle = "#7b1020";
+        ctx.font = "bold 32px Arial";
+        ctx.fillText(momento + ":", 110, y);
+
+        ctx.fillStyle = "#222";
+        ctx.font = "30px Arial";
+        ctx.fillText(`${titulo}${tono ? " (" + tono + ")" : ""}`, 280, y);
+
+        y += 75;
+      }
+    });
+
+    // Pie
+    ctx.fillStyle = "#999";
+    ctx.font = "24px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Cantoral Kerigma", 540, 1225);
+
+    canvas.toBlob(async function(blob){
+      const archivo = new File([blob], "proxima-misa-kerigma.png", {
+        type: "image/png"
+      });
+
+      if(navigator.canShare && navigator.canShare({ files: [archivo] })){
+        await navigator.share({
+          title: "Próxima Misa",
+          text: "Cantos para la próxima misa",
+          files: [archivo]
+        });
+      }else{
+        const enlace = document.createElement("a");
+        enlace.href = URL.createObjectURL(blob);
+        enlace.download = "proxima-misa-kerigma.png";
+        enlace.click();
+      }
+    }, "image/png");
+  };
+}
