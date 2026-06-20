@@ -1,4 +1,19 @@
 window.CANTOS_SALIDA = [
+{
+  titulo: "Te Damos Gracias Señor",
+  categoria: "Salida",
+  tiempo: "Ordinario",
+  tono: "C",
+  autor: "Kerigma",
+  notas: "Canto de salida",
+  letra:`
+T[C]e Damos Gr[F]acias Señ[C]or
+De todo coraz[G]ón
+T[C]e Damos Gr[F]acias Señ[C]or
+Cant[F]amos p[G]ara t[C]i (2)
+`
+},
+
   {
     titulo: "Quiero darte las gracias",
     categoria: "Salida",
