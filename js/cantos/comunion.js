@@ -7,6 +7,21 @@ window.CANTOS_COMUNION = [
     autor: "Kerigma",
     notas: "Canto de comunion",
     letra:`
+{
+  titulo: "Aleluya",
+  categoria: "Aleluya",
+  tiempo: "Ordinario",
+  tono: "D",
+  autor: "Keeigma",
+  notas: "Aleluya",
+  letra:`
+Aleluya 
+Aleluya
+123
+`
+},
+
+{
 [coro]
 E[D]l señ[Bm]or n[Em]os invita y[A7]a
 c[D]on am[Bm]or s[Em]u cuerpo a com[A7]ulgar,
@@ -38,6 +53,8 @@ C[D]ome el c[Bm]uerpo d[Em]el señ[A7]or,
 [D]Es t[Bm]estimoni[Em]o de am[A7]or
 [D]Es b[Bm]anquete f[Em]amili[A7]ar.
 
-`
-  }
+}
+
+
+`
 ];
