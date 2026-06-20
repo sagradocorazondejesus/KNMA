@@ -7,7 +7,8 @@ window.CANTOS_SANTO = [
     autor: "Kerigma",
     notas: "Canto de Santo",
     letra:`
-[C#m], [C#m]
+[C#m]
+[C#m]
 
 [verso1]
 
