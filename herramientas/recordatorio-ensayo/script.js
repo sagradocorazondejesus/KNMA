@@ -284,7 +284,7 @@ Hola familia Kerigma 😊
 📍 *Lugar:* ${d.lugar}
 
 ┌────────────────────┐
-📖 _“${d.cita}”_
+  📖 _“${d.cita}”_
 └────────────────────┘
 
 ${d.fraseFinal}`;
@@ -292,9 +292,9 @@ ${d.fraseFinal}`;
 
     case 1:
       texto =
-`━━━━━━━━━━━━━━━━
+`━━━━━━━━━━━━━━━━━━━━━━
 🎵 *Recordatorio de ensayo*
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━
 
 📅 ${d.fecha}
 🕖 ${d.hora}
@@ -302,7 +302,7 @@ ${d.fraseFinal}`;
 
 📖 _${d.cita}_
 
-━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━
 ${d.fraseFinal}`;
       break;
 
