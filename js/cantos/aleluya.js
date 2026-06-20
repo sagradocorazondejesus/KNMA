@@ -7,6 +7,7 @@ window.CANTOS_ALELUYA = [
   autor: "Kerigma",
   notas: "Canto del Aleluya",
   letra:`
+[verso 1]
 [D]A Aleluy[A]a Ale [Bm]lu alelu[F#m]ya
 [G]A Alel[D]u alel[A]uya
 [D]A Aleluy[A]a Ale [Bm]lu alelu[F#m]ya
@@ -14,6 +15,7 @@ window.CANTOS_ALELUYA = [
 
 [Antifona antes del evangelio]
 
+[verso 2]
 [D]A Aleluy[A]a Ale l[Bm]u aleluy[F#m]a
 [G]A Alel[D]u alel[A]uy[D]a
 
