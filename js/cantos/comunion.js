@@ -38,7 +38,8 @@ C[D]ome el c[Bm]uerpo d[Em]el señ[A7]or,
 [D]Es t[Bm]estimoni[Em]o de am[A7]or
 [D]Es b[Bm]anquete f[Em]amili[A7]ar.
 
-`},
+`
+},
 
 {
   titulo: "Es mi cierpo",
@@ -75,8 +76,7 @@ Trabaj[G]ando en su tall[D]er
 Con sus manos Cristo obr[A7]ero
 Trabaj[D]o
 
-
-
-`}
+`
+}
 
 ];
