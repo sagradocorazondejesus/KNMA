@@ -23,7 +23,7 @@ Danos la p[G]az
 },
 
   {
-    titulo: "Cordero Mejia",
+    titulo: "Cordero Mejia 1k",
     categoria: "Cordero",
     tiempo: "Ordinario",
     tono: "Em",
