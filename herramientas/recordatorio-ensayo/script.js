@@ -284,7 +284,7 @@ Hola familia Kerigma 😊
 📍 *Lugar:* ${d.lugar}
 
 ┌────────────────────┐
-  📖 _“${d.cita}”_
+    📖 _“${d.cita}”_
 └────────────────────┘
 
 ${d.fraseFinal}`;
@@ -316,9 +316,9 @@ Familia Kerigma, nos vemos:
 🕖 *${d.hora}*
 📍 *${d.lugar}*
 
-╭───────────────╮
-📖 _${d.cita}_
-╰───────────────╯
+┌────────────────────┐
+    📖 _“${d.cita}”_
+└────────────────────┘
 
 ¡Ánimo! Nos vemos al ratito 😄`;
       break;
