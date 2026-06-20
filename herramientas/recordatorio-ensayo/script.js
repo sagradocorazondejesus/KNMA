@@ -6,14 +6,70 @@ const ctx = canvas.getContext("2d");
 let estiloActual = 0;
 
 const estilos = [
-  { nombre: "Moderno verde", bg: ["#f7fffb", "#2f8f88"], color: "#164b4d" },
-  { nombre: "Papel cálido", bg: ["#f8ead1", "#b06a38"], color: "#6d3d1f" },
-  { nombre: "Elegante oscuro", bg: ["#07111f", "#c9a44c"], color: "#f4d98a" },
-  { nombre: "Juvenil dinámico", bg: ["#3a176d", "#ffcc24"], color: "#ffffff" },
-  { nombre: "Mariano azul", bg: ["#eaf5ff", "#2870b8"], color: "#16416d" },
-  { nombre: "Kerigma vino", bg: ["#fff5f7", "#7a1230"], color: "#7a1230" },
-  { nombre: "Acuarela suave", bg: ["#f6fff7", "#78b68a"], color: "#2d6542" },
-  { nombre: "Noche musical", bg: ["#111827", "#8b5cf6"], color: "#ffffff" },
+  {
+    nombre: "Kerigma vino",
+    fondo1: "#fff6f8",
+    fondo2: "#8a1236",
+    texto: "#7a1230",
+    suave: "#f7edf1",
+    tarjeta: "#ffffff"
+  },
+  {
+    nombre: "Mariano azul",
+    fondo1: "#eef8ff",
+    fondo2: "#2678bb",
+    texto: "#114466",
+    suave: "#edf7ff",
+    tarjeta: "#ffffff"
+  },
+  {
+    nombre: "Papel cálido",
+    fondo1: "#fff5e8",
+    fondo2: "#c47a3a",
+    texto: "#633719",
+    suave: "#fff8ed",
+    tarjeta: "#ffffff"
+  },
+  {
+    nombre: "Verde esperanza",
+    fondo1: "#f3fff8",
+    fondo2: "#2f9c82",
+    texto: "#15574d",
+    suave: "#eefaf5",
+    tarjeta: "#ffffff"
+  },
+  {
+    nombre: "Elegante oscuro",
+    fondo1: "#101820",
+    fondo2: "#c8a04a",
+    texto: "#f5d984",
+    suave: "#182436",
+    tarjeta: "#ffffff"
+  },
+  {
+    nombre: "Juvenil morado",
+    fondo1: "#25104d",
+    fondo2: "#8b5cf6",
+    texto: "#ffffff",
+    suave: "#38206a",
+    tarjeta: "#ffffff"
+  },
+  {
+    nombre: "Acuarela",
+    fondo1: "#f7fff7",
+    fondo2: "#7abf91",
+    texto: "#236343",
+    suave: "#effaf1",
+    tarjeta: "#ffffff"
+  },
+  {
+    nombre: "Noche musical",
+    fondo1: "#07111f",
+    fondo2: "#263d7a",
+    texto: "#ffffff",
+    suave: "#101d35",
+    tarjeta: "#ffffff"
+  }
 ];
 
 function cargarEstilos() {
@@ -24,9 +80,11 @@ function cargarEstilos() {
     const div = document.createElement("div");
     div.className = "estilo" + (i === estiloActual ? " activo" : "");
     div.innerHTML = `
-      <div class="mini" style="background:linear-gradient(135deg,${e.bg[0]},${e.bg[1]})"></div>
-      <strong>Estilo ${i + 1}</strong><br>
-      <small>${e.nombre}</small>
+      <div class="mini" style="background:linear-gradient(135deg,${e.fondo1},${e.fondo2})"></div>
+      <div>
+        <strong>Estilo ${i + 1}</strong><br>
+        <small>${e.nombre}</small>
+      </div>
     `;
     div.onclick = () => {
       estiloActual = i;
@@ -37,106 +95,133 @@ function cargarEstilos() {
   });
 }
 
-function textoMultilinea(texto, x, y, maxWidth, lineHeight) {
+function roundRect(x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function escribirTextoAjustado(texto, x, y, maxWidth, lineHeight, maxY) {
   const lineas = texto.split("\n");
 
-  lineas.forEach(linea => {
+  for (const linea of lineas) {
     const palabras = linea.split(" ");
     let actual = "";
 
-    palabras.forEach(palabra => {
+    for (const palabra of palabras) {
       const prueba = actual + palabra + " ";
-      if (ctx.measureText(prueba).width > maxWidth) {
-        ctx.fillText(actual, x, y);
+      if (ctx.measureText(prueba).width > maxWidth && actual !== "") {
+        if (y + lineHeight > maxY) return;
+        ctx.fillText(actual.trim(), x, y);
         actual = palabra + " ";
         y += lineHeight;
       } else {
         actual = prueba;
       }
-    });
+    }
 
-    ctx.fillText(actual, x, y);
-    y += lineHeight;
-  });
+    if (actual.trim() !== "") {
+      if (y + lineHeight > maxY) return;
+      ctx.fillText(actual.trim(), x, y);
+      y += lineHeight;
+    }
+
+    y += lineHeight * 0.45;
+  }
 }
 
 function generarImagen() {
   const estilo = estilos[estiloActual];
+
   const cita = document.getElementById("cita").value;
   const fecha = document.getElementById("fecha").value;
   const hora = document.getElementById("hora").value;
   const lugar = document.getElementById("lugar").value;
 
   const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  grad.addColorStop(0, estilo.bg[0]);
-  grad.addColorStop(1, estilo.bg[1]);
+  grad.addColorStop(0, estilo.fondo1);
+  grad.addColorStop(1, estilo.fondo2);
 
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "rgba(255,255,255,.88)";
-  ctx.roundRect(60, 60, 1080, 555, 34);
+  ctx.fillStyle = "rgba(255,255,255,0.92)";
+  roundRect(70, 90, 940, 1740, 55);
   ctx.fill();
 
-  ctx.fillStyle = estilo.color;
-  ctx.font = "bold 72px system-ui";
-  ctx.fillText("ENSAYO", 330, 175);
-
-  ctx.font = "bold 46px system-ui";
-  ctx.fillText("DEL CORO", 335, 235);
-
-  ctx.font = "28px system-ui";
-  ctx.fillText("📅 Fecha: " + fecha, 335, 320);
-  ctx.fillText("🕖 Hora: " + hora, 335, 370);
-  ctx.fillText("📍 Lugar: " + lugar, 335, 420);
-
-  ctx.fillStyle = "rgba(255,255,255,.75)";
-  ctx.roundRect(735, 120, 340, 370, 24);
+  ctx.fillStyle = estilo.suave;
+  roundRect(105, 1230, 870, 470, 42);
   ctx.fill();
 
-  ctx.fillStyle = estilo.color;
-  ctx.font = "bold 44px serif";
-  ctx.fillText("“", 770, 185);
+  ctx.fillStyle = estilo.texto;
 
-  ctx.font = "30px serif";
-  textoMultilinea(cita, 790, 235, 240, 40);
+  ctx.font = "900 96px system-ui";
+  ctx.fillText("ENSAYO", 100, 520);
 
-  ctx.font = "bold 28px system-ui";
-  ctx.fillText("¡Tu presencia hace la diferencia! 🎶", 345, 545);
+  ctx.font = "800 62px system-ui";
+  ctx.fillText("DEL CORO", 105, 600);
+
+  ctx.font = "38px system-ui";
+  ctx.fillText("📅  Fecha: " + fecha, 105, 760);
+  ctx.fillText("🕖  Hora: " + hora, 105, 830);
+
+  ctx.fillText("📍  Lugar:", 105, 900);
+  ctx.font = "36px system-ui";
+  escribirTextoAjustado(lugar, 165, 955, 720, 46, 1120);
+
+  ctx.fillStyle = estilo.tarjeta;
+  roundRect(105, 1230, 870, 470, 42);
+  ctx.fill();
+
+  ctx.strokeStyle = estilo.texto;
+  ctx.lineWidth = 4;
+  roundRect(105, 1230, 870, 470, 42);
+  ctx.stroke();
+
+  ctx.fillStyle = estilo.texto;
+  ctx.font = "bold 80px serif";
+  ctx.fillText("“", 150, 1340);
+
+  ctx.font = "44px Georgia, serif";
+  escribirTextoAjustado(cita, 170, 1430, 730, 58, 1625);
+
+  ctx.font = "bold 36px system-ui";
+  ctx.textAlign = "center";
+  ctx.fillText("¡Tu presencia hace la diferencia! 🎶", 540, 1770);
+  ctx.textAlign = "left";
 
   const logo = new Image();
   logo.crossOrigin = "anonymous";
   logo.src = logoUrl;
+
   logo.onload = () => {
     ctx.save();
     ctx.beginPath();
-    ctx.arc(185, 185, 95, 0, Math.PI * 2);
+    ctx.arc(210, 260, 125, 0, Math.PI * 2);
     ctx.clip();
-    ctx.drawImage(logo, 90, 90, 190, 190);
+    ctx.drawImage(logo, 85, 135, 250, 250);
     ctx.restore();
   };
 }
 
 function descargarImagen() {
-  const link = document.createElement("a");
-  link.download = "recordatorio-ensayo.png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
+  generarImagen();
+
+  setTimeout(() => {
+    const link = document.createElement("a");
+    link.download = "recordatorio-ensayo.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  }, 300);
 }
 
-CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-  this.beginPath();
-  this.moveTo(x + r, y);
-  this.lineTo(x + w - r, y);
-  this.quadraticCurveTo(x + w, y, x + w, y + r);
-  this.lineTo(x + w, y + h - r);
-  this.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  this.lineTo(x + r, y + h);
-  this.quadraticCurveTo(x, y + h, x, y + h - r);
-  this.lineTo(x, y + r);
-  this.quadraticCurveTo(x, y, x + r, y);
-  this.closePath();
-};
-
 cargarEstilos();
-generarImagen();3
+generarImagen();
