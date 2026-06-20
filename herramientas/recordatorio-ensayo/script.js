@@ -273,77 +273,96 @@ function generarTexto() {
   switch (estiloTextoActual) {
     case 0:
       texto =
-`🎵 *Recordatorio de ensayo*
+`╔════════════════════╗
+     🎵 *ENSAYO KERIGMA*
+╚════════════════════╝
 
 Hola familia Kerigma 😊
 
-Nos vemos ${d.fecha} a las *${d.hora}* en *${d.lugar}*.
+📅 *Fecha:* ${d.fecha}
+🕖 *Hora:* ${d.hora}
+📍 *Lugar:* ${d.lugar}
 
+┌────────────────────┐
 📖 _“${d.cita}”_
+└────────────────────┘
 
 ${d.fraseFinal}`;
       break;
 
     case 1:
       texto =
-`🎵 *Ensayo Kerigma*
+`━━━━━━━━━━━━━━━━
+🎵 *Recordatorio de ensayo*
+━━━━━━━━━━━━━━━━
 
-${d.fecha}
+📅 ${d.fecha}
 🕖 ${d.hora}
 📍 ${d.lugar}
 
 📖 _${d.cita}_
 
+━━━━━━━━━━━━━━━━
 ${d.fraseFinal}`;
       break;
 
     case 2:
       texto =
-`🎶 *¡Hoy toca ensayo!*
+`🎶✨ *¡Hoy toca ensayo!* ✨🎶
 
-Familia Kerigma, nos vemos ${d.fecha} a las *${d.hora}*.
+Familia Kerigma, nos vemos:
 
-📍 *Lugar:* ${d.lugar}
+📅 *${d.fecha}*
+🕖 *${d.hora}*
+📍 *${d.lugar}*
 
+╭───────────────╮
 📖 _${d.cita}_
+╰───────────────╯
 
 ¡Ánimo! Nos vemos al ratito 😄`;
       break;
 
     case 3:
       texto =
-`*Recordatorio de ensayo*
+`✝️ *Recordatorio de ensayo* 🎵
 
-Se les recuerda que tendremos ensayo ${d.fecha} a las *${d.hora}* en *${d.lugar}*.
+Antes de cantar, preparemos también el corazón.
 
-Cita bíblica:
-_${d.cita}_
+📖 _${d.cita}_
+
+Nos vemos:
+📅 ${d.fecha}
+🕖 ${d.hora}
+📍 ${d.lugar}
 
 ${d.fraseFinal}`;
       break;
 
     case 4:
       texto =
-`🎵 *Recordatorio de ensayo*
+`*Ensayo Kerigma*
 
-Antes de cantar, preparemos también el corazón.
+${d.fecha}
+${d.hora}
+${d.lugar}
 
-📖 _${d.cita}_
-
-Nos vemos ${d.fecha} a las *${d.hora}* en *${d.lugar}*.
+_${d.cita}_
 
 ${d.fraseFinal}`;
       break;
 
     case 5:
       texto =
-`*Recordatorio de ensayo*
+`*RECORDATORIO DE ENSAYO*
 
 Hola familia Kerigma.
 
-Nos vemos ${d.fecha} a las *${d.hora}* en *${d.lugar}*.
+Fecha: ${d.fecha}
+Hora: ${d.hora}
+Lugar: ${d.lugar}
 
-_${d.cita}_
+"${d.cita}"
 
 ${d.fraseFinal}`;
       break;
@@ -351,6 +370,9 @@ ${d.fraseFinal}`;
 
   document.getElementById("mensajeWhatsApp").value = texto;
 }
+
+
+
 
 function generarTodo() {
   generarImagen();
