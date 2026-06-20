@@ -1,6 +1,6 @@
 window.CANTOS_SANTO = [
   {
-    titulo: "Santo Papal",
+    titulo: "Santo Papal 1k",
     categoria: "Santo",
     tiempo: "Ordinario",
     tono: "C#m",
