@@ -57,6 +57,12 @@ function seleccionarCanto(index){
   actualizarDatosCanto();
   mostrarCanto();
 actualizarBotonFavorito();
+
+document.getElementById("tituloCanto")
+  .scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
 
 function actualizarDatosCanto(){
