@@ -1,4 +1,27 @@
 window.CANTOS_CORDERO = [
+{
+  titulo: "Cordero 2k",
+  categoria: "Cordero",
+  tiempo: "Ordinario",
+  tono: "G",
+  autor: "Kerigma",
+  notas: "Canto del cordero",
+  letra:`
+Cordero de Di[G]os
+Que quitas el pec[Em]ado
+El pecado del m[C]undo - [D7]o
+Ten pied[G]ad (2)
+
+Cordero de Di[G]os
+Que quitas el pec[Em]ado
+El pecado del m[C]undo - [D7]o
+Danos la p[G]a - [D7]az
+Danos la p[G]a - [D7]az
+Danos la p[G]az
+
+`
+},
+
   {
     titulo: "Cordero Mejia",
     categoria: "Cordero",
