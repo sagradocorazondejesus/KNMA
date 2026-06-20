@@ -1,6 +1,6 @@
 window.CANTOS_KYRIE = [
 {
-  titulo: "Kyrie Em",
+  titulo: "Kyrie 2k",
   categoria: "Kyrie",
   tiempo: "Ordinario",
   tono: "Em",
@@ -19,7 +19,7 @@ De no - [Em]so - [B7]o - tr[Em]os (2)
 },
 
   {
-    titulo: "Kyrie Am",
+    titulo: "Kyrie 1k",
     categoria: "Kyrie",
     tiempo: "Ordinario",
     tono: "Am",
