@@ -1,1 +1,140 @@
-2
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f4f0f7;
+  color: #241d2d;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 22px;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.panel,
+.preview,
+.texto-box {
+  background: white;
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 10px 30px #0001;
+}
+
+h1 {
+  margin: 0;
+  color: #7a1230;
+}
+
+p {
+  color: #666;
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  font-weight: 800;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid #dac9e6;
+  border-radius: 15px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.opciones {
+  display: grid;
+  gap: 10px;
+}
+
+.opcion {
+  border: 2px solid #eee;
+  border-radius: 16px;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.opcion.activo {
+  border-color: #7a1230;
+  background: #fff0f5;
+}
+
+.mini {
+  width: 58px;
+  height: 42px;
+  border-radius: 12px;
+}
+
+button {
+  width: 100%;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 16px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 900;
+  color: white;
+  background: #7a1230;
+}
+
+button.secundario {
+  background: #2f2f3a;
+}
+
+button.whatsapp {
+  background: #128c7e;
+}
+
+.preview {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 22px;
+  align-items: start;
+}
+
+canvas {
+  width: 100%;
+  max-width: 470px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px #0002;
+  justify-self: center;
+}
+
+.texto-box textarea {
+  min-height: 430px;
+  line-height: 1.5;
+}
+
+@media (max-width: 950px) {
+  .app,
+  .preview {
+    grid-template-columns: 1fr;
+  }
+
+  .app {
+    padding: 12px;
+  }
+
+  canvas {
+    max-width: 100%;
+  }
+}2
