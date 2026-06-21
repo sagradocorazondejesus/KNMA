@@ -1,1 +1,59 @@
-1
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yo voy a misa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+  <section class="panel">
+    <h1>⛪ Yo voy a misa</h1>
+    <p>Genera imágenes para evangelizar y compartir.</p>
+
+    <label>Frase principal</label>
+    <input id="titulo" value="YO VOY A MISA" />
+
+    <label>Frase secundaria</label>
+    <input id="subtitulo" value="No por obligación" />
+
+    <label>Motivo</label>
+    <textarea id="motivo">Porque Cristo me espera en la Eucaristía.</textarea>
+
+    <label>Firma / mensaje final</label>
+    <input id="firma" value="Jesús te espera ❤️" />
+
+    <h3>Formato</h3>
+    <div class="opciones">
+      <div class="opcion activo" id="formatoVertical" onclick="cambiarFormato('vertical')">
+        📱 Vertical
+      </div>
+      <div class="opcion" id="formatoHorizontal" onclick="cambiarFormato('horizontal')">
+        🖼️ Horizontal
+      </div>
+    </div>
+
+    <h3>Estilo</h3>
+    <div id="estilos" class="opciones"></div>
+
+    <button onclick="fraseAleatoria()">🎲 Frase aleatoria</button>
+    <button onclick="generarImagen()">Actualizar imagen</button>
+    <button onclick="descargarImagen()" class="secundario">Descargar imagen</button>
+    <button onclick="copiarTexto()" class="whatsapp">Copiar texto</button>
+  </section>
+
+  <section class="preview">
+    <canvas id="canvas"></canvas>
+
+    <div class="texto-box">
+      <h2>Texto para WhatsApp</h2>
+      <textarea id="textoWhatsApp" readonly></textarea>
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
