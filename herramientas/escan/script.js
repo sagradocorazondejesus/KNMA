@@ -95,8 +95,8 @@ async function openCamera() {
     stream = await navigator.mediaDevices.getUserMedia({
       video: {
         facingMode: "environment",
-        width: { ideal: 1920 },
-        height: { ideal: 1080 }
+        width: { ideal: 3840 },
+        height: { ideal: 2160 }
       },
       audio: false
     });
@@ -185,7 +185,7 @@ function processImage(dataUrl) {
 
     img.onload = () => {
       const canvas = document.createElement("canvas");
-      const maxWidth = 1600;
+      const maxWidth = 2400;
       const scale = Math.min(maxWidth / img.width, 1);
 
       canvas.width = img.width * scale;
