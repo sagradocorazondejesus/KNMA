@@ -126,12 +126,6 @@ function closeCamera() {
   cameraBox.classList.add("hidden");
 }
 
-function stopAutoCapture() {
-  autoCaptureRunning = false;
-  clearTimeout(autoTimer);
-  guide.classList.remove("scanning");
-}
-
 async function captureFromCamera() {
   if (!video.videoWidth) return;
 
