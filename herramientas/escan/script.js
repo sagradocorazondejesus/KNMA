@@ -21,8 +21,10 @@ const paperSize = document.getElementById("paperSize");
 let pages = [];
 let blackWhite = false;
 let stream = null;
-let autoTimer = null;
-let autoCaptureRunning = false;
+let detectionInterval = null;
+let documentDetected = false;
+let documentStableCount = 0;
+let captureDone = false;
 
 fileInput.addEventListener("change", async (e) => {
   const files = Array.from(e.target.files);
@@ -105,14 +107,15 @@ async function openCamera() {
 guide.classList.remove("letter", "legal", "a4", "free");
 guide.classList.add(paperSize.value);
 
-    startAutoCapture();
+    resetDetection();
+    startDetection();
   } catch (error) {
     alert("No se pudo abrir la cámara. Revisa permisos del navegador.");
   }
 }
 
 function closeCamera() {
-  stopAutoCapture();
+  stopDetection();
 
   if (stream) {
     stream.getTracks().forEach(track => track.stop());
@@ -121,27 +124,6 @@ function closeCamera() {
 
   video.srcObject = null;
   cameraBox.classList.add("hidden");
-}
-
-function startAutoCapture() {
-  if (autoCaptureRunning) return;
-
-  autoCaptureRunning = true;
-  guide.classList.add("scanning");
-  counter.textContent = "Mantén la hoja dentro del marco...";
-
-  autoTimer = setTimeout(async () => {
-  counter.textContent = "Escaneando...";
-  await captureFromCamera();
-
-  stopAutoCapture();
-
-  counter.textContent = `Página ${pages.length} agregada`;
-
-  setTimeout(() => {
-    closeCamera();
-  }, 700);
-}, 3000);
 }
 
 function stopAutoCapture() {
@@ -453,4 +435,225 @@ function autoCropDocument(dataUrl) {
 
     img.src = dataUrl;
   });
+}
+
+
+function resetDetection() {
+  documentDetected = false;
+  documentStableCount = 0;
+  captureDone = false;
+
+  guide.classList.remove("scanning");
+  guide.style.borderColor = "#ff3333";
+  counter.textContent = "Buscando hoja...";
+}
+
+function startDetection() {
+  stopDetection();
+
+  detectionInterval = setInterval(async () => {
+    if (captureDone) return;
+    await detectDocument();
+  }, 350);
+}
+
+function stopDetection() {
+  clearInterval(detectionInterval);
+  detectionInterval = null;
+  guide.classList.remove("scanning");
+}
+
+async function detectDocument() {
+  if (!video.videoWidth) return;
+
+  if (typeof cv === "undefined" || !cv.imread) {
+    counter.textContent = "Cargando detector...";
+    return;
+  }
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  const result = findDocumentCorners(canvas);
+
+  if (!result) {
+    documentDetected = false;
+    documentStableCount = 0;
+    guide.style.borderColor = "#ff3333";
+    counter.textContent = "Buscando hoja...";
+    guide.classList.remove("scanning");
+    return;
+  }
+
+  documentDetected = true;
+  documentStableCount++;
+
+  if (documentStableCount < 5) {
+    guide.style.borderColor = "#ffd21f";
+    counter.textContent = "Hoja detectada, mantenla estable...";
+    guide.classList.remove("scanning");
+    return;
+  }
+
+  guide.style.borderColor = "#32ff7e";
+  guide.classList.add("scanning");
+  counter.textContent = "Hoja estable, escaneando...";
+
+  captureDone = true;
+  stopDetection();
+
+  setTimeout(async () => {
+    const corrected = warpDocument(canvas, result.corners);
+    const scanned = await processImage(corrected);
+
+    pages.push(scanned);
+    renderPages();
+
+    counter.textContent = `Página ${pages.length} agregada`;
+
+    setTimeout(() => {
+      closeCamera();
+    }, 700);
+  }, 900);
+}
+
+function findDocumentCorners(canvas) {
+  let src = cv.imread(canvas);
+  let gray = new cv.Mat();
+  let blur = new cv.Mat();
+  let edges = new cv.Mat();
+  let contours = new cv.MatVector();
+  let hierarchy = new cv.Mat();
+
+  cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY);
+  cv.GaussianBlur(gray, blur, new cv.Size(5, 5), 0);
+  cv.Canny(blur, edges, 50, 150);
+
+  cv.findContours(
+    edges,
+    contours,
+    hierarchy,
+    cv.RETR_EXTERNAL,
+    cv.CHAIN_APPROX_SIMPLE
+  );
+
+  let bestCorners = null;
+  let bestArea = 0;
+
+  for (let i = 0; i < contours.size(); i++) {
+    const contour = contours.get(i);
+    const peri = cv.arcLength(contour, true);
+    const approx = new cv.Mat();
+
+    cv.approxPolyDP(contour, approx, 0.02 * peri, true);
+
+    if (approx.rows === 4) {
+      const area = cv.contourArea(approx);
+      const minArea = canvas.width * canvas.height * 0.15;
+
+      if (area > bestArea && area > minArea) {
+        bestArea = area;
+
+        const points = [];
+        for (let j = 0; j < 4; j++) {
+          points.push({
+            x: approx.data32S[j * 2],
+            y: approx.data32S[j * 2 + 1]
+          });
+        }
+
+        bestCorners = orderCorners(points);
+      }
+    }
+
+    contour.delete();
+    approx.delete();
+  }
+
+  src.delete();
+  gray.delete();
+  blur.delete();
+  edges.delete();
+  contours.delete();
+  hierarchy.delete();
+
+  if (!bestCorners) return null;
+
+  return {
+    corners: bestCorners,
+    area: bestArea
+  };
+}
+
+function orderCorners(points) {
+  const sorted = points.slice().sort((a, b) => a.y - b.y);
+
+  const top = sorted.slice(0, 2).sort((a, b) => a.x - b.x);
+  const bottom = sorted.slice(2, 4).sort((a, b) => a.x - b.x);
+
+  return {
+    topLeft: top[0],
+    topRight: top[1],
+    bottomRight: bottom[1],
+    bottomLeft: bottom[0]
+  };
+}
+
+function distance(p1, p2) {
+  return Math.hypot(p1.x - p2.x, p1.y - p2.y);
+}
+
+function warpDocument(sourceCanvas, corners) {
+  const widthTop = distance(corners.topLeft, corners.topRight);
+  const widthBottom = distance(corners.bottomLeft, corners.bottomRight);
+  const maxWidth = Math.max(widthTop, widthBottom);
+
+  const heightLeft = distance(corners.topLeft, corners.bottomLeft);
+  const heightRight = distance(corners.topRight, corners.bottomRight);
+  const maxHeight = Math.max(heightLeft, heightRight);
+
+  const srcTri = cv.matFromArray(4, 1, cv.CV_32FC2, [
+    corners.topLeft.x, corners.topLeft.y,
+    corners.topRight.x, corners.topRight.y,
+    corners.bottomRight.x, corners.bottomRight.y,
+    corners.bottomLeft.x, corners.bottomLeft.y
+  ]);
+
+  const dstTri = cv.matFromArray(4, 1, cv.CV_32FC2, [
+    0, 0,
+    maxWidth, 0,
+    maxWidth, maxHeight,
+    0, maxHeight
+  ]);
+
+  const src = cv.imread(sourceCanvas);
+  const dst = new cv.Mat();
+
+  const M = cv.getPerspectiveTransform(srcTri, dstTri);
+
+  cv.warpPerspective(
+    src,
+    dst,
+    M,
+    new cv.Size(maxWidth, maxHeight),
+    cv.INTER_LINEAR,
+    cv.BORDER_CONSTANT,
+    new cv.Scalar()
+  );
+
+  const outputCanvas = document.createElement("canvas");
+  cv.imshow(outputCanvas, dst);
+
+  src.delete();
+  dst.delete();
+  M.delete();
+  srcTri.delete();
+  dstTri.delete();
+
+  return outputCanvas.toDataURL("image/jpeg", 0.95);
 }
