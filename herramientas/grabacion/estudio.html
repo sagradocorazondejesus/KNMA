@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Grabadora Multipista</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #ffd36a;
+    }
+
+    button {
+      border: none;
+      padding: 12px 16px;
+      margin: 6px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .record {
+      background: #d62828;
+      color: white;
+    }
+
+    .stop {
+      background: #444;
+      color: white;
+    }
+
+    .play {
+      background: #2a9d8f;
+      color: white;
+    }
+
+    .track {
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 14px;
+      padding: 12px;
+      margin: 12px 0;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 10px;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🎙️ Multipista Kerigma</h1>
+
+  <p>Graba guitarra, voz, arreglos o lo que necesites.</p>
+
+  <input id="trackName" placeholder="Nombre de la pista, ejemplo: Voz">
+
+  <br>
+
+  <button class="record" onclick="startRecording()">● Grabar</button>
+  <button class="stop" onclick="stopRecording()">■ Detener</button>
+
+  <hr>
+
+  <button class="play" onclick="playAll()">▶ Reproducir todas</button>
+  <button class="stop" onclick="stopAll()">■ Detener todas</button>
+
+  <div id="tracks"></div>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+let tracks = [];
+let stream;
+
+async function startRecording() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    audioChunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+
+    mediaRecorder.ondataavailable = event => {
+      audioChunks.push(event.data);
+    };
+
+    mediaRecorder.onstop = () => {
+      const blob = new Blob(audioChunks, { type: "audio/webm" });
+      const url = URL.createObjectURL(blob);
+
+      const nameInput = document.getElementById("trackName");
+      const name = nameInput.value.trim() || "Pista " + (tracks.length + 1);
+
+      tracks.push({
+        name,
+        url,
+        blob,
+        audio: null
+      });
+
+      nameInput.value = "";
+      renderTracks();
+    };
+
+    mediaRecorder.start();
+    alert("Grabando...");
+  } catch (error) {
+    alert("No se pudo usar el micrófono. Revisa permisos.");
+    console.error(error);
+  }
+}
+
+function stopRecording() {
+  if (mediaRecorder && mediaRecorder.state === "recording") {
+    mediaRecorder.stop();
+
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
+  }
+}
+
+function renderTracks() {
+  const container = document.getElementById("tracks");
+  container.innerHTML = "";
+
+  tracks.forEach((track, index) => {
+    const div = document.createElement("div");
+    div.className = "track";
+
+    div.innerHTML = `
+      <h3>${track.name}</h3>
+      <audio controls src="${track.url}"></audio>
+      <br>
+      <button class="play" onclick="playTrack(${index})">▶ Reproducir</button>
+      <button class="stop" onclick="stopTrack(${index})">■ Detener</button>
+      <button onclick="downloadTrack(${index})">⬇ Descargar</button>
+      <button onclick="deleteTrack(${index})">🗑 Borrar</button>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+function playTrack(index) {
+  stopTrack(index);
+  tracks[index].audio = new Audio(tracks[index].url);
+  tracks[index].audio.play();
+}
+
+function stopTrack(index) {
+  if (tracks[index].audio) {
+    tracks[index].audio.pause();
+    tracks[index].audio.currentTime = 0;
+  }
+}
+
+function playAll() {
+  stopAll();
+
+  tracks.forEach(track => {
+    track.audio = new Audio(track.url);
+    track.audio.play();
+  });
+}
+
+function stopAll() {
+  tracks.forEach(track => {
+    if (track.audio) {
+      track.audio.pause();
+      track.audio.currentTime = 0;
+    }
+  });
+}
+
+function downloadTrack(index) {
+  const a = document.createElement("a");
+  a.href = tracks[index].url;
+  a.download = tracks[index].name + ".webm";
+  a.click();
+}
+
+function deleteTrack(index) {
+  tracks.splice(index, 1);
+  renderTracks();
+}
+</script>
+
+</body>
+</html>
