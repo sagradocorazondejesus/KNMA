@@ -474,6 +474,7 @@ async function detectDocument() {
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
   const result = findDocumentCorners(canvas);
+console.log("Detectando documento:", result);
 
   if (!result) {
     documentDetected = false;
@@ -526,7 +527,7 @@ function findDocumentCorners(canvas) {
 
   cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY);
   cv.GaussianBlur(gray, blur, new cv.Size(5, 5), 0);
-  cv.Canny(blur, edges, 50, 150);
+  cv.Canny(blur, edges, 30, 100);
 
   cv.findContours(
     edges,
@@ -544,11 +545,11 @@ function findDocumentCorners(canvas) {
     const peri = cv.arcLength(contour, true);
     const approx = new cv.Mat();
 
-    cv.approxPolyDP(contour, approx, 0.02 * peri, true);
+    cv.approxPolyDP(contour, approx, 0.03 * peri, true);
 
     if (approx.rows === 4) {
       const area = cv.contourArea(approx);
-      const minArea = canvas.width * canvas.height * 0.15;
+      const minArea = canvas.width * canvas.height * 0.08;
 
       if (area > bestArea && area > minArea) {
         bestArea = area;
