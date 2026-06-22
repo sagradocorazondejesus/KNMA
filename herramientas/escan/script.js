@@ -131,16 +131,17 @@ function startAutoCapture() {
   counter.textContent = "Mantén la hoja dentro del marco...";
 
   autoTimer = setTimeout(async () => {
-    counter.textContent = "Escaneando...";
-    await captureFromCamera();
+  counter.textContent = "Escaneando...";
+  await captureFromCamera();
 
-    guide.classList.remove("scanning");
-    void guide.offsetWidth;
-    guide.classList.add("scanning");
+  stopAutoCapture();
 
-    autoCaptureRunning = false;
-    startAutoCapture();
-  }, 3000);
+  counter.textContent = `Página ${pages.length} agregada`;
+
+  setTimeout(() => {
+    closeCamera();
+  }, 700);
+}, 3000);
 }
 
 function stopAutoCapture() {
