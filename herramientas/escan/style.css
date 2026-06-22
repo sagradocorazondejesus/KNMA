@@ -12,12 +12,13 @@ body {
 .app {
   max-width: 520px;
   margin: auto;
-  padding: 18px;
+  padding: 16px;
+  padding-bottom: 90px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 4px;
+  margin: 8px 0 4px;
 }
 
 .sub {
@@ -28,45 +29,77 @@ h1 {
 
 .card {
   background: white;
-  padding: 16px;
+  padding: 14px;
   border-radius: 20px;
   box-shadow: 0 8px 20px #0002;
 }
 
-.btn,
-button {
-  width: 100%;
+button,
+.mainBtn {
   border: 0;
-  border-radius: 15px;
-  padding: 14px;
-  font-size: 16px;
+  border-radius: 14px;
+  padding: 13px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
 }
 
-.btn {
+.mainBtn {
   display: block;
+  width: 100%;
   text-align: center;
   background: #7b1e3a;
   color: white;
+  margin-bottom: 10px;
 }
 
-.controls {
+.mainBtn.secondary {
+  background: #2f604d;
+}
+
+.controls,
+.bottom {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
-  margin-top: 12px;
 }
 
-.controls button {
+.controls button,
+.bottom button {
   font-size: 13px;
   padding: 10px;
   background: #eadfd5;
   color: #3a2b22;
 }
 
+.bottom {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(520px, 100%);
+  background: #f3f0ea;
+  padding: 10px 16px;
+  box-shadow: 0 -4px 12px #0001;
+}
+
+.bottom button:nth-child(1) {
+  background: #315f4c;
+  color: white;
+}
+
+.bottom button:nth-child(2) {
+  background: #7b1e3a;
+  color: white;
+}
+
+.bottom button:nth-child(3) {
+  background: #234f9c;
+  color: white;
+}
+
 .preview {
-  margin-top: 18px;
+  margin-top: 16px;
   display: grid;
   gap: 14px;
 }
@@ -84,32 +117,146 @@ button {
   border-radius: 10px;
 }
 
-.page button {
+.pageActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
   margin-top: 8px;
+}
+
+.pageActions button {
   background: #333;
   color: white;
-  font-size: 14px;
-  padding: 10px;
+  font-size: 13px;
+  padding: 9px;
 }
 
-.bottom {
-  position: sticky;
-  bottom: 0;
-  background: #f3f0ea;
-  padding: 12px 0;
-  display: grid;
-  gap: 10px;
+.cameraBox {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.bottom button {
-  background: #1f6f50;
+.hidden {
+  display: none;
+}
+
+#video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.guide {
+  position: absolute;
+  width: 82%;
+  height: 70%;
+  border: 3px solid #ffd21f;
+  border-radius: 16px;
+  box-shadow: 0 0 0 999px #0007;
+}
+
+.guideLine {
+  position: absolute;
+  background: #32ff7e;
+  opacity: 0;
+}
+
+.guideLine.top {
+  top: -3px;
+  left: -3px;
+  height: 5px;
+  width: 0%;
+}
+
+.guideLine.right {
+  top: -3px;
+  right: -3px;
+  width: 5px;
+  height: 0%;
+}
+
+.guideLine.bottom {
+  bottom: -3px;
+  right: -3px;
+  height: 5px;
+  width: 0%;
+}
+
+.guideLine.left {
+  bottom: -3px;
+  left: -3px;
+  width: 5px;
+  height: 0%;
+}
+
+.scanning .guideLine {
+  opacity: 1;
+}
+
+.scanning .top {
+  animation: topLine 3s linear forwards;
+}
+
+.scanning .right {
+  animation: rightLine 3s linear forwards;
+}
+
+.scanning .bottom {
+  animation: bottomLine 3s linear forwards;
+}
+
+.scanning .left {
+  animation: leftLine 3s linear forwards;
+}
+
+@keyframes topLine {
+  to { width: calc(100% + 6px); }
+}
+
+@keyframes rightLine {
+  to { height: calc(100% + 6px); }
+}
+
+@keyframes bottomLine {
+  to { width: calc(100% + 6px); }
+}
+
+@keyframes leftLine {
+  to { height: calc(100% + 6px); }
+}
+
+#counter {
+  position: absolute;
+  left: 50%;
+  bottom: -48px;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 2px 4px #000;
+}
+
+.captureBtn,
+.closeBtn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
   color: white;
 }
 
-.bottom button:nth-child(2) {
+.captureBtn {
+  bottom: 78px;
   background: #7b1e3a;
 }
 
-.bottom button:nth-child(3) {
-  background: #234f9c;
+.closeBtn {
+  bottom: 24px;
+  background: #333;
 }
