@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escáner PDF</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Librería para crear PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <main class="app">
+    <h1>📄 Escáner PDF</h1>
+    <p class="sub">Toma fotos, guarda como PDF o imagen y comparte.</p>
+
+    <section class="card">
+      <label class="btn">
+        📷 Escanear / Elegir imagen
+        <input id="fileInput" type="file" accept="image/*" capture="environment" multiple hidden>
+      </label>
+
+      <div class="controls">
+        <button id="btnGray">Blanco y negro</button>
+        <button id="btnColor">Color</button>
+        <button id="btnClear">Limpiar</button>
+      </div>
+    </section>
+
+    <section id="preview" class="preview"></section>
+
+    <section class="bottom">
+      <button id="btnSaveImage">Guardar imagen</button>
+      <button id="btnPDF">Guardar PDF</button>
+      <button id="btnShare">Compartir</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
