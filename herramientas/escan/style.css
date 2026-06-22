@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f3f0ea;
+  color: #2b2118;
+}
+
+.app {
+  max-width: 520px;
+  margin: auto;
+  padding: 18px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.sub {
+  text-align: center;
+  margin-top: 0;
+  color: #6b5b4b;
+}
+
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px #0002;
+}
+
+.btn,
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 15px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  background: #7b1e3a;
+  color: white;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.controls button {
+  font-size: 13px;
+  padding: 10px;
+  background: #eadfd5;
+  color: #3a2b22;
+}
+
+.preview {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.page {
+  background: white;
+  padding: 8px;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px #0002;
+}
+
+.page img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+.page button {
+  margin-top: 8px;
+  background: #333;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+}
+
+.bottom {
+  position: sticky;
+  bottom: 0;
+  background: #f3f0ea;
+  padding: 12px 0;
+  display: grid;
+  gap: 10px;
+}
+
+.bottom button {
+  background: #1f6f50;
+  color: white;
+}
+
+.bottom button:nth-child(2) {
+  background: #7b1e3a;
+}
+
+.bottom button:nth-child(3) {
+  background: #234f9c;
+}
