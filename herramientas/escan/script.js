@@ -16,6 +16,8 @@ const video = document.getElementById("video");
 const guide = document.querySelector(".guide");
 const counter = document.getElementById("counter");
 
+const paperSize = document.getElementById("paperSize");
+
 let pages = [];
 let blackWhite = false;
 let stream = null;
@@ -100,11 +102,13 @@ async function openCamera() {
     video.srcObject = stream;
     cameraBox.classList.remove("hidden");
 
+guide.classList.remove("letter", "legal", "a4", "free");
+guide.classList.add(paperSize.value);
+
     startAutoCapture();
   } catch (error) {
     alert("No se pudo abrir la cámara. Revisa permisos del navegador.");
   }
-}
 
 function closeCamera() {
   stopAutoCapture();
@@ -342,3 +346,8 @@ function downloadBlob(blob, filename) {
 
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+
+paperSize.addEventListener("change", () => {
+  guide.classList.remove("letter", "legal", "a4", "free");
+  guide.classList.add(paperSize.value);
+});
