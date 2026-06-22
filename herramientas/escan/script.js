@@ -15,6 +15,8 @@ const cameraBox = document.getElementById("cameraBox");
 const video = document.getElementById("video");
 const guide = document.querySelector(".guide");
 const counter = document.getElementById("counter");
+const overlay = document.getElementById("overlay");
+const overlayCtx = overlay.getContext("2d");
 
 const paperSize = document.getElementById("paperSize");
 
