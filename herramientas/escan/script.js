@@ -591,16 +591,43 @@ function findDocumentCorners(canvas) {
 }
 
 function orderCorners(points) {
-  const sorted = points.slice().sort((a, b) => a.y - b.y);
+  let topLeft, topRight, bottomRight, bottomLeft;
 
-  const top = sorted.slice(0, 2).sort((a, b) => a.x - b.x);
-  const bottom = sorted.slice(2, 4).sort((a, b) => a.x - b.x);
+  let minSum = Infinity;
+  let maxSum = -Infinity;
+  let minDiff = Infinity;
+  let maxDiff = -Infinity;
+
+  points.forEach(p => {
+    const sum = p.x + p.y;
+    const diff = p.x - p.y;
+
+    if (sum < minSum) {
+      minSum = sum;
+      topLeft = p;
+    }
+
+    if (sum > maxSum) {
+      maxSum = sum;
+      bottomRight = p;
+    }
+
+    if (diff < minDiff) {
+      minDiff = diff;
+      bottomLeft = p;
+    }
+
+    if (diff > maxDiff) {
+      maxDiff = diff;
+      topRight = p;
+    }
+  });
 
   return {
-    topLeft: top[0],
-    topRight: top[1],
-    bottomRight: bottom[1],
-    bottomLeft: bottom[0]
+    topLeft,
+    topRight,
+    bottomRight,
+    bottomLeft
   };
 }
 
@@ -637,13 +664,12 @@ function warpDocument(sourceCanvas, corners) {
   const M = cv.getPerspectiveTransform(srcTri, dstTri);
 
   cv.warpPerspective(
-    src,
-    dst,
-    M,
-    new cv.Size(maxWidth, maxHeight),
-    cv.INTER_LINEAR,
-    cv.BORDER_CONSTANT,
-    new cv.Scalar()
+  src,
+  dst,
+  M,
+  new cv.Size(maxWidth, maxHeight),
+  cv.INTER_LINEAR,
+  cv.BORDER_REPLICATE
   );
 
   const outputCanvas = document.createElement("canvas");
