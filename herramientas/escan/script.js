@@ -163,18 +163,15 @@ async function createPDF() {
 
   const pageWidth = 210;
   const pageHeight = 297;
-  const margin = 8;
-  const usableWidth = pageWidth - margin * 2;
-  const usableHeight = pageHeight - margin * 2;
 
   for (let i = 0; i < pages.length; i++) {
     if (i > 0) pdf.addPage();
 
     const img = await loadImage(pages[i].final);
 
-    const ratio = Math.min(
-      usableWidth / img.width,
-      usableHeight / img.height
+    const ratio = Math.max(
+      pageWidth / img.width,
+      pageHeight / img.height
     );
 
     const imgWidth = img.width * ratio;
