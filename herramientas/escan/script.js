@@ -488,7 +488,7 @@ console.log("Detectando documento:", result);
   documentDetected = true;
   documentStableCount++;
 
-  if (documentStableCount < 5) {
+  if (documentStableCount < 3) {
     guide.style.borderColor = "#ffd21f";
     counter.textContent = "Hoja detectada, mantenla estable...";
     guide.classList.remove("scanning");
