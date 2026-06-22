@@ -125,6 +125,7 @@ function closeCamera() {
   }
 
   video.srcObject = null;
+  clearOverlay();
   cameraBox.classList.add("hidden");
 }
 
@@ -477,6 +478,7 @@ async function detectDocument() {
 
   const result = findDocumentCorners(canvas);
 console.log("Detectando documento:", result);
+clearOverlay();
 
   if (!result) {
     documentDetected = false;
@@ -487,6 +489,7 @@ console.log("Detectando documento:", result);
     return;
   }
 
+  drawDetectedCorners(result.corners);
   documentDetected = true;
   documentStableCount++;
 
@@ -654,3 +657,59 @@ function warpDocument(sourceCanvas, corners) {
 
   return outputCanvas.toDataURL("image/jpeg", 0.95);
 }
+
+
+function clearOverlay() {
+  overlayCtx.clearRect(0, 0, overlay.width, overlay.height);
+}
+
+function prepareOverlay() {
+  const rect = video.getBoundingClientRect();
+  overlay.width = rect.width;
+  overlay.height = rect.height;
+}
+
+function drawDetectedCorners(corners) {
+  prepareOverlay();
+  clearOverlay();
+
+  const videoRect = video.getBoundingClientRect();
+
+  const scaleX = overlay.width / video.videoWidth;
+  const scaleY = overlay.height / video.videoHeight;
+
+  const points = [
+    corners.topLeft,
+    corners.topRight,
+    corners.bottomRight,
+    corners.bottomLeft
+  ].map(p => ({
+    x: p.x * scaleX,
+    y: p.y * scaleY
+  }));
+
+  overlayCtx.lineWidth = 4;
+  overlayCtx.strokeStyle = "#32ff7e";
+  overlayCtx.fillStyle = "#32ff7e";
+
+  overlayCtx.beginPath();
+  overlayCtx.moveTo(points[0].x, points[0].y);
+
+  for (let i = 1; i < points.length; i++) {
+    overlayCtx.lineTo(points[i].x, points[i].y);
+  }
+
+  overlayCtx.closePath();
+  overlayCtx.stroke();
+
+  points.forEach(point => {
+    overlayCtx.beginPath();
+    overlayCtx.arc(point.x, point.y, 9, 0, Math.PI * 2);
+    overlayCtx.fill();
+  });
+}
+
+
+
+
+
