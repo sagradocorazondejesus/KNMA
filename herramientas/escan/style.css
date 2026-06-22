@@ -233,7 +233,7 @@ button,
 #counter {
   position: absolute;
   left: 50%;
-  bottom: -48px;
+  bottom: -70px;
   transform: translateX(-50%);
   width: 100%;
   text-align: center;
