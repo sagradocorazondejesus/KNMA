@@ -172,7 +172,9 @@ async function captureFromCamera() {
   ctx.drawImage(video, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height);
 
   const dataUrl = canvas.toDataURL("image/jpeg", 0.95);
-  const scanned = await processImage(dataUrl);
+
+  const cropped = await autoCropDocument(dataUrl);
+  const scanned = await processImage(cropped);
 
   pages.push(scanned);
   renderPages();
@@ -352,3 +354,102 @@ paperSize.addEventListener("change", () => {
   guide.classList.remove("letter", "legal", "a4", "free");
   guide.classList.add(paperSize.value);
 });
+
+function autoCropDocument(dataUrl) {
+  return new Promise((resolve) => {
+    if (typeof cv === "undefined") {
+      resolve(dataUrl);
+      return;
+    }
+
+    const img = new Image();
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+
+      let src = cv.imread(canvas);
+      let gray = new cv.Mat();
+      let blur = new cv.Mat();
+      let edges = new cv.Mat();
+      let contours = new cv.MatVector();
+      let hierarchy = new cv.Mat();
+
+      cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY);
+      cv.GaussianBlur(gray, blur, new cv.Size(5, 5), 0);
+      cv.Canny(blur, edges, 50, 150);
+
+      cv.findContours(
+        edges,
+        contours,
+        hierarchy,
+        cv.RETR_EXTERNAL,
+        cv.CHAIN_APPROX_SIMPLE
+      );
+
+      let bestRect = null;
+      let bestArea = 0;
+
+      for (let i = 0; i < contours.size(); i++) {
+        const contour = contours.get(i);
+        const rect = cv.boundingRect(contour);
+        const area = rect.width * rect.height;
+
+        const minArea = canvas.width * canvas.height * 0.25;
+
+        if (area > bestArea && area > minArea) {
+          bestArea = area;
+          bestRect = rect;
+        }
+
+        contour.delete();
+      }
+
+      if (!bestRect) {
+        src.delete();
+        gray.delete();
+        blur.delete();
+        edges.delete();
+        contours.delete();
+        hierarchy.delete();
+
+        resolve(dataUrl);
+        return;
+      }
+
+      const padding = 8;
+
+      const x = Math.max(bestRect.x - padding, 0);
+      const y = Math.max(bestRect.y - padding, 0);
+      const w = Math.min(bestRect.width + padding * 2, canvas.width - x);
+      const h = Math.min(bestRect.height + padding * 2, canvas.height - y);
+
+      const cropCanvas = document.createElement("canvas");
+      const cropCtx = cropCanvas.getContext("2d");
+
+      cropCanvas.width = w;
+      cropCanvas.height = h;
+
+      cropCtx.drawImage(
+        canvas,
+        x, y, w, h,
+        0, 0, w, h
+      );
+
+      src.delete();
+      gray.delete();
+      blur.delete();
+      edges.delete();
+      contours.delete();
+      hierarchy.delete();
+
+      resolve(cropCanvas.toDataURL("image/jpeg", 0.95));
+    };
+
+    img.src = dataUrl;
+  });
+}
