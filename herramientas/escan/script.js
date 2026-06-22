@@ -109,6 +109,7 @@ guide.classList.add(paperSize.value);
   } catch (error) {
     alert("No se pudo abrir la cámara. Revisa permisos del navegador.");
   }
+}
 
 function closeCamera() {
   stopAutoCapture();
