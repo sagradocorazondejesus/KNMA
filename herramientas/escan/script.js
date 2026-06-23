@@ -573,7 +573,7 @@ function findDocumentCorners(canvas) {
       continue;
      }
 
-      const minArea = canvas.width * canvas.height * 0.25;
+      const minArea = canvas.width * canvas.height * 0.50;
 
       if (area > bestArea && area > minArea) {
         bestArea = area;
