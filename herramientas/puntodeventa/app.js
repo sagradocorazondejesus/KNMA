@@ -1,11 +1,6 @@
 let productos = JSON.parse(localStorage.getItem("productosPOS")) || [];
 let ventas = JSON.parse(localStorage.getItem("ventasPOS")) || [];
 
-let codeReader = null;
-let escaneando = false;
-let ultimoCodigo = "";
-let ultimoTiempo = 0;
-
 function guardar() {
   localStorage.setItem("productosPOS", JSON.stringify(productos));
   localStorage.setItem("ventasPOS", JSON.stringify(ventas));
@@ -54,28 +49,11 @@ function limpiarFormulario() {
   document.getElementById("stock").value = "";
 }
 
-function venderManual() {
-  const codigo = document.getElementById("codigoVenta").value.trim();
-  vender(codigo);
-  document.getElementById("codigoVenta").value = "";
-}
-
 function vender(codigo) {
-  if (!codigo) return;
-
-  const ahora = Date.now();
-
-  if (codigo === ultimoCodigo && ahora - ultimoTiempo < 2000) {
-    return;
-  }
-
-  ultimoCodigo = codigo;
-  ultimoTiempo = ahora;
-
   const producto = productos.find(p => p.codigo === codigo);
 
   if (!producto) {
-    mensaje("Producto no encontrado: " + codigo, true);
+    mensaje("Producto no encontrado", true);
     return;
   }
 
@@ -100,54 +78,29 @@ function vender(codigo) {
   mensaje("Venta registrada: " + producto.nombre);
 }
 
-async function iniciarCamara() {
-  if (escaneando) return;
+function devolverVenta(index) {
+  const venta = ventas[index];
 
-  codeReader = new ZXing.BrowserMultiFormatReader();
-  escaneando = true;
+  if (!venta) return;
 
-  try {
-    const devices = await codeReader.listVideoInputDevices();
+  if (!confirm("¿Devolver esta venta al stock?")) return;
 
-    if (devices.length === 0) {
-      mensaje("No se encontró cámara", true);
-      escaneando = false;
-      return;
-    }
+  const producto = productos.find(p => p.codigo === venta.codigo);
 
-    const camaraTrasera =
-      devices.find(d => d.label.toLowerCase().includes("back")) ||
-      devices.find(d => d.label.toLowerCase().includes("rear")) ||
-      devices[devices.length - 1];
-
-    codeReader.decodeFromVideoDevice(
-      camaraTrasera.deviceId,
-      "video",
-      (result, error) => {
-        if (result) {
-          vender(result.text);
-        }
-      }
-    );
-
-    mensaje("Cámara lista. Escanea un código.");
-  } catch (e) {
-    mensaje("No se pudo abrir la cámara. Usa GitHub Pages con https.", true);
-    escaneando = false;
-  }
-}
-
-function detenerCamara() {
-  if (codeReader) {
-    codeReader.reset();
+  if (producto) {
+    producto.stock++;
   }
 
-  escaneando = false;
-  mensaje("Cámara detenida");
+  ventas.splice(index, 1);
+
+  guardar();
+  render();
+  mensaje("Venta devuelta al stock");
 }
 
 function sumarStock(codigo) {
   const producto = productos.find(p => p.codigo === codigo);
+
   if (producto) {
     producto.stock++;
     guardar();
@@ -157,6 +110,7 @@ function sumarStock(codigo) {
 
 function restarStock(codigo) {
   const producto = productos.find(p => p.codigo === codigo);
+
   if (producto && producto.stock > 0) {
     producto.stock--;
     guardar();
@@ -175,17 +129,30 @@ function eliminarProducto(codigo) {
 function render() {
   const listaProductos = document.getElementById("listaProductos");
   const listaVentas = document.getElementById("listaVentas");
+  const ventaRapida = document.getElementById("ventaRapida");
 
   listaProductos.innerHTML = "";
   listaVentas.innerHTML = "";
+  ventaRapida.innerHTML = "";
 
   productos.forEach(p => {
     const ganancia = p.precio - p.costo;
 
+    ventaRapida.innerHTML += `
+      <button 
+        class="btn-producto ${p.stock <= 0 ? "sin-stock" : ""}" 
+        onclick="vender('${p.codigo}')"
+        ${p.stock <= 0 ? "disabled" : ""}
+      >
+        ${p.nombre}
+        <small>Stock: ${p.stock} | Venta: $${p.precio}</small>
+      </button>
+    `;
+
     listaProductos.innerHTML += `
       <div class="producto">
         <strong>${p.nombre}</strong><br>
-        Código: ${p.codigo}<br>
+        Clave: ${p.codigo}<br>
         Stock: <span class="${p.stock <= 3 ? "low" : ""}">${p.stock}</span><br>
         Compra: $${p.costo} | Venta: $${p.precio}<br>
         Ganancia por pieza: $${ganancia}
@@ -199,12 +166,13 @@ function render() {
     `;
   });
 
-  ventas.slice(0, 30).forEach(v => {
+  ventas.slice(0, 30).forEach((v, index) => {
     listaVentas.innerHTML += `
       <div class="venta">
         <strong>${v.nombre}</strong><br>
         ${v.fecha}<br>
         Venta: $${v.precio} | Ganancia: $${v.ganancia}
+        <button class="danger" onclick="devolverVenta(${index})">Devolver al stock</button>
       </div>
     `;
   });
@@ -217,10 +185,11 @@ function render() {
   document.getElementById("totalGanancia").textContent = totalGanancia;
   document.getElementById("totalInversion").textContent = totalInversion;
   document.getElementById("totalProductos").textContent = productos.length;
+  document.getElementById("piezasVendidas").textContent = ventas.length;
 }
 
 function exportarCSV() {
-  let csv = "Fecha,Codigo,Producto,Costo,Precio,Ganancia\n";
+  let csv = "Fecha,Clave,Producto,Costo,Precio,Ganancia\n";
 
   ventas.forEach(v => {
     csv += `${v.fecha},${v.codigo},${v.nombre},${v.costo},${v.precio},${v.ganancia}\n`;
@@ -243,6 +212,7 @@ function borrarVentas() {
   ventas = [];
   guardar();
   render();
+  mensaje("Historial de ventas borrado");
 }
 
 render();
