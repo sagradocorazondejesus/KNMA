@@ -532,14 +532,21 @@ function findDocumentCorners(canvas) {
 
   cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY);
   cv.GaussianBlur(gray, blur, new cv.Size(5, 5), 0);
-  cv.Canny(blur, edges, 20, 80);
+
+  cv.threshold(
+   blur,
+   edges,
+   150,
+   255,
+   cv.THRESH_BINARY
+);
 
   cv.findContours(
     edges,
     contours,
     hierarchy,
     cv.RETR_EXTERNAL,
-    cv.CHAIN_APPROX_NONE
+    cv.CHAIN_APPROX_SIMPLE
   );
 
   let bestCorners = null;
@@ -550,7 +557,7 @@ function findDocumentCorners(canvas) {
     const peri = cv.arcLength(contour, true);
     const approx = new cv.Mat();
 
-    cv.approxPolyDP(contour, approx, 0.03 * peri, true);
+    cv.approxPolyDP(contour, approx, 0.04 * peri, true);
 
     if (approx.rows === 4) {
       const area = cv.contourArea(approx);
