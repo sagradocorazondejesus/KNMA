@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Punto de Venta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://unpkg.com/@zxing/library@latest"></script>
+</head>
+<body>
+
+<header>
+  <h1>🥤 Punto de Venta</h1>
+  <p>Refrescos y snacks</p>
+</header>
+
+<main>
+
+  <section class="card">
+    <h2>📷 Escanear venta</h2>
+
+    <video id="video" muted playsinline></video>
+
+    <button onclick="iniciarCamara()">Iniciar cámara</button>
+    <button class="danger" onclick="detenerCamara()">Detener cámara</button>
+
+    <input id="codigoVenta" placeholder="O escribe el código manualmente">
+    <button onclick="venderManual()">Registrar venta</button>
+
+    <p id="mensaje"></p>
+  </section>
+
+  <section class="card">
+    <h2>📊 Resumen</h2>
+
+    <div class="resumen">
+      <div>Total vendido<br><strong>$<span id="totalVentas">0</span></strong></div>
+      <div>Ganancia<br><strong>$<span id="totalGanancia">0</span></strong></div>
+      <div>Inversión<br><strong>$<span id="totalInversion">0</span></strong></div>
+      <div>Productos<br><strong><span id="totalProductos">0</span></strong></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>➕ Agregar producto</h2>
+
+    <input id="codigo" placeholder="Código de barras">
+    <input id="nombre" placeholder="Nombre del producto">
+    <input id="costo" type="number" placeholder="Precio de compra">
+    <input id="precio" type="number" placeholder="Precio de venta">
+    <input id="stock" type="number" placeholder="Stock inicial">
+
+    <button onclick="agregarProducto()">Guardar producto</button>
+  </section>
+
+  <section class="card">
+    <h2>📦 Inventario</h2>
+
+    <div id="listaProductos"></div>
+  </section>
+
+  <section class="card">
+    <h2>🧾 Ventas</h2>
+
+    <button onclick="exportarCSV()">Descargar Excel CSV</button>
+    <button class="danger" onclick="borrarVentas()">Borrar ventas</button>
+
+    <div id="listaVentas"></div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
