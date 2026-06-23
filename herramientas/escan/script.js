@@ -345,8 +345,8 @@ function autoCropDocument(dataUrl) {
     const img = new Image();
 
     img.onload = () => {
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
 
       canvas.width = img.width;
       canvas.height = img.height;
@@ -532,14 +532,14 @@ function findDocumentCorners(canvas) {
 
   cv.cvtColor(src, gray, cv.COLOR_RGBA2GRAY);
   cv.GaussianBlur(gray, blur, new cv.Size(5, 5), 0);
-  cv.Canny(blur, edges, 30, 100);
+  cv.Canny(blur, edges, 20, 80);
 
   cv.findContours(
     edges,
     contours,
     hierarchy,
     cv.RETR_EXTERNAL,
-    cv.CHAIN_APPROX_SIMPLE
+    cv.CHAIN_APPROX_NONE
   );
 
   let bestCorners = null;
@@ -554,7 +554,17 @@ function findDocumentCorners(canvas) {
 
     if (approx.rows === 4) {
       const area = cv.contourArea(approx);
-      const minArea = canvas.width * canvas.height * 0.08;
+      const rect = cv.boundingRect(approx);
+
+      const ratio = rect.width / rect.height;
+
+      if (ratio < 0.5 || ratio > 2.2) {
+      approx.delete();
+      contour.delete();
+      continue;
+     }
+
+      const minArea = canvas.width * canvas.height * 0.04;
 
       if (area > bestArea && area > minArea) {
         bestArea = area;
@@ -714,7 +724,7 @@ function drawDetectedCorners(corners) {
     y: p.y * scaleY
   }));
 
-  overlayCtx.lineWidth = 4;
+  overlayCtx.lineWidth = 8;
   overlayCtx.strokeStyle = "#32ff7e";
   overlayCtx.fillStyle = "#32ff7e";
 
