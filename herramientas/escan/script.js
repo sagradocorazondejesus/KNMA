@@ -698,6 +698,13 @@ function warpDocument(sourceCanvas, corners) {
   srcTri.delete();
   dstTri.delete();
 
+console.log(
+  "Documento:",
+  Math.round(maxWidth),
+  "x",
+  Math.round(maxHeight)
+);
+
   return outputCanvas.toDataURL("image/jpeg", 0.95);
 }
 
