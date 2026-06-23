@@ -521,7 +521,7 @@ clearOverlay();
     setTimeout(() => {
       closeCamera();
     }, 700);
-  }, 900);
+  }, 1800);
 }
 
 function findDocumentCorners(canvas) {
