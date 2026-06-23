@@ -5,8 +5,6 @@
   <title>Punto de Venta</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-
-  <script src="https://unpkg.com/@zxing/library@latest"></script>
 </head>
 <body>
 
@@ -18,16 +16,9 @@
 <main>
 
   <section class="card">
-    <h2>📷 Escanear venta</h2>
-
-    <video id="video" muted playsinline></video>
-
-    <button onclick="iniciarCamara()">Iniciar cámara</button>
-    <button class="danger" onclick="detenerCamara()">Detener cámara</button>
-
-    <input id="codigoVenta" placeholder="O escribe el código manualmente">
-    <button onclick="venderManual()">Registrar venta</button>
-
+    <h2>🛒 Venta rápida</h2>
+    <p>Toca un producto para registrarlo como venta.</p>
+    <div id="ventaRapida" class="venta-rapida"></div>
     <p id="mensaje"></p>
   </section>
 
@@ -38,14 +29,15 @@
       <div>Total vendido<br><strong>$<span id="totalVentas">0</span></strong></div>
       <div>Ganancia<br><strong>$<span id="totalGanancia">0</span></strong></div>
       <div>Inversión<br><strong>$<span id="totalInversion">0</span></strong></div>
-      <div>Productos<br><strong><span id="totalProductos">0</span></strong></div>
+      <div>Tipos<br><strong><span id="totalProductos">0</span></strong></div>
+      <div>Piezas vendidas<br><strong><span id="piezasVendidas">0</span></strong></div>
     </div>
   </section>
 
   <section class="card">
     <h2>➕ Agregar producto</h2>
 
-    <input id="codigo" placeholder="Código de barras">
+    <input id="codigo" placeholder="Código o clave del producto">
     <input id="nombre" placeholder="Nombre del producto">
     <input id="costo" type="number" placeholder="Precio de compra">
     <input id="precio" type="number" placeholder="Precio de venta">
@@ -56,7 +48,6 @@
 
   <section class="card">
     <h2>📦 Inventario</h2>
-
     <div id="listaProductos"></div>
   </section>
 
