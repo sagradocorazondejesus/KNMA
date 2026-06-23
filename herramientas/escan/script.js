@@ -96,8 +96,7 @@ async function openCamera() {
   try {
     stream = await navigator.mediaDevices.getUserMedia({
       video: {
-  facingMode: "environment"
-}
+        facingMode: { ideal: "environment" }
       },
       audio: false
     });
@@ -105,8 +104,8 @@ async function openCamera() {
     video.srcObject = stream;
     cameraBox.classList.remove("hidden");
 
-guide.classList.remove("letter", "legal", "a4", "free");
-guide.classList.add(paperSize.value);
+    guide.classList.remove("letter", "legal", "a4", "free");
+    guide.classList.add(paperSize.value);
 
     resetDetection();
     startDetection();
@@ -114,6 +113,8 @@ guide.classList.add(paperSize.value);
     alert("No se pudo abrir la cámara. Revisa permisos del navegador.");
   }
 }
+
+
 
 function closeCamera() {
   stopDetection();
