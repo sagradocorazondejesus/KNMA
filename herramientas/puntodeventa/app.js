@@ -189,6 +189,7 @@ document.getElementById("totalGanancia").textContent =
 
 document.getElementById("totalInversion").textContent =
   totalInversion.toFixed(2);
+
   document.getElementById("totalProductos").textContent = productos.length;
   document.getElementById("piezasVendidas").textContent = ventas.length;
 }
