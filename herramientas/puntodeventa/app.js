@@ -126,6 +126,12 @@ function eliminarProducto(codigo) {
   render();
 }
 
+
+function dinero(valor) {
+  return Number(valor || 0).toFixed(2);
+}
+
+
 function render() {
   const listaProductos = document.getElementById("listaProductos");
   const listaVentas = document.getElementById("listaVentas");
@@ -145,7 +151,8 @@ function render() {
         ${p.stock <= 0 ? "disabled" : ""}
       >
         ${p.nombre}
-        <small>Stock: ${p.stock} | Venta: $${p.precio}</small>
+        <small>Stock: ${p.stock} | Venta: $${dinero(p.precio)}</small>
+
       </button>
     `;
 
@@ -183,18 +190,16 @@ function render() {
     `;
   });
 
-  const totalVentas = ventas.reduce((s, v) => s + v.precio, 0);
-  const totalGanancia = ventas.reduce((s, v) => s + v.ganancia, 0);
-  const totalInversion = productos.reduce((s, p) => s + (p.costo * p.stock), 0);
+  const totalVentas = ventas.reduce((s, v) => s + Number(v.precio || 0), 0);
+const totalGanancia = ventas.reduce((s, v) => s + Number(v.ganancia || 0), 0);
+const totalInversion = productos.reduce(
+  (s, p) => s + (Number(p.costo || 0) * Number(p.stock || 0)),
+  0
+);
 
-  document.getElementById("totalVentas").textContent =
-  totalVentas.toFixed(2);
-
-document.getElementById("totalGanancia").textContent =
-  totalGanancia.toFixed(2);
-
-document.getElementById("totalInversion").textContent =
-  totalInversion.toFixed(2);
+  document.getElementById("totalVentas").textContent = dinero(totalVentas);
+document.getElementById("totalGanancia").textContent = dinero(totalGanancia);
+document.getElementById("totalInversion").textContent = dinero(totalInversion);
 
   document.getElementById("totalProductos").textContent = productos.length;
   document.getElementById("piezasVendidas").textContent = ventas.length;
