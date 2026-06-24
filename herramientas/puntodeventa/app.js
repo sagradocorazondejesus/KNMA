@@ -153,9 +153,14 @@ function render() {
       <div class="producto">
         <strong>${p.nombre}</strong><br>
         Clave: ${p.codigo}<br>
-        Stock: <span class="${p.stock <= 3 ? "low" : ""}">${p.stock}</span><br>
-        Compra: $${p.costo} | Venta: $${p.precio}<br>
-        Ganancia por pieza: $${ganancia}
+        Stock: <span class="${p.stock <= 3 ? "low" : ""}">${p.stock}</span>
+
+<br>
+
+        Compra: $${p.costo.toFixed(2)} | Venta: $${p.precio.toFixed(2)}
+
+<br>
+        Ganancia por pieza: $${ganancia.toFixed(2)}
 
         <div class="acciones">
           <button onclick="sumarStock('${p.codigo}')">+ Stock</button>
@@ -171,7 +176,8 @@ function render() {
       <div class="venta">
         <strong>${v.nombre}</strong><br>
         ${v.fecha}<br>
-        Venta: $${v.precio} | Ganancia: $${v.ganancia}
+        Venta: $${v.precio.toFixed(2)}
+| Ganancia: $${v.ganancia.toFixed(2)}
         <button class="danger" onclick="devolverVenta(${index})">Devolver al stock</button>
       </div>
     `;
