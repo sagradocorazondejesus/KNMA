@@ -181,9 +181,14 @@ function render() {
   const totalGanancia = ventas.reduce((s, v) => s + v.ganancia, 0);
   const totalInversion = productos.reduce((s, p) => s + (p.costo * p.stock), 0);
 
-  document.getElementById("totalVentas").textContent = totalVentas;
-  document.getElementById("totalGanancia").textContent = totalGanancia;
-  document.getElementById("totalInversion").textContent = totalInversion;
+  document.getElementById("totalVentas").textContent =
+  totalVentas.toFixed(2);
+
+document.getElementById("totalGanancia").textContent =
+  totalGanancia.toFixed(2);
+
+document.getElementById("totalInversion").textContent =
+  totalInversion.toFixed(2);
   document.getElementById("totalProductos").textContent = productos.length;
   document.getElementById("piezasVendidas").textContent = ventas.length;
 }
