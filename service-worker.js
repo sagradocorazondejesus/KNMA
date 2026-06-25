@@ -1,4 +1,4 @@
-const CACHE_NAME = "cantoral-kerigma-v1.0.0";
+const CACHE_NAME = "cantoral-kerigma-v1.0.1";
 
 const ARCHIVOS = [
   "./",
