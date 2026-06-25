@@ -309,6 +309,16 @@ button{
   border-radius:12px;
 }
 
+.btn-update{
+  max-width:220px;
+  display:block;
+  margin:0 auto 10px;
+  font-size:13px;
+  padding:8px 12px;
+  border-radius:20px;
+}
+
 .lista-grande{
   max-height:70vh !important;
 }
+
