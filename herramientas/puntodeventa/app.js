@@ -233,3 +233,63 @@ function borrarVentas() {
 }
 
 render();
+
+
+
+function descargarRespaldo() {
+  const respaldo = {
+    productos: productos,
+    ventas: ventas,
+    fechaRespaldo: new Date().toISOString(),
+    app: "Punto de Venta"
+  };
+
+  const texto = JSON.stringify(respaldo, null, 2);
+  const archivo = new Blob([texto], { type: "application/json" });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(archivo);
+
+  const fecha = new Date().toLocaleDateString("es-MX").replaceAll("/", "-");
+  link.download = `respaldo-punto-venta-${fecha}.json`;
+
+  link.click();
+
+  URL.revokeObjectURL(link.href);
+}
+
+function cargarRespaldo(event) {
+  const archivo = event.target.files[0];
+  if (!archivo) return;
+
+  const lector = new FileReader();
+
+  lector.onload = function(e) {
+    try {
+      const datos = JSON.parse(e.target.result);
+
+      if (!Array.isArray(datos.productos) || !Array.isArray(datos.ventas)) {
+        alert("Este archivo no parece ser un respaldo válido.");
+        return;
+      }
+
+      const confirmar = confirm(
+        "Esto reemplazará los productos y ventas actuales. ¿Deseas continuar?"
+      );
+
+      if (!confirmar) return;
+
+      productos = datos.productos;
+      ventas = datos.ventas;
+
+      guardar();
+      render();
+
+      alert("Respaldo cargado correctamente.");
+    } catch (error) {
+      alert("No se pudo cargar el respaldo.");
+    }
+  };
+
+  lector.readAsText(archivo);
+}
