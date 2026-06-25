@@ -171,6 +171,28 @@
 <script src="js/transpositor.js"></script>
 <script src="js/app.js"></script>
 <script src="js/misa.js"></script>
+<script>
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("service-worker.js");
+}
+
+function buscarActualizacion(){
+  if("serviceWorker" in navigator){
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if(reg){
+        reg.update().then(() => {
+          alert("Buscando actualización. La app se recargará.");
+          window.location.reload();
+        });
+      }else{
+        window.location.reload();
+      }
+    });
+  }else{
+    window.location.reload();
+  }
+}
+</script>
 
 </body>
 </html>
