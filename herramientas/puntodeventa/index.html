@@ -58,6 +58,20 @@
   <section class="card">
     <h2>🧾 Ventas</h2>
 
+<button onclick="descargarRespaldo()">Descargar respaldo</button>
+
+<input 
+  type="file" 
+  id="archivoRespaldo" 
+  accept=".json" 
+  style="display:none"
+  onchange="cargarRespaldo(event)"
+>
+
+<button onclick="document.getElementById('archivoRespaldo').click()">
+  Cargar respaldo
+</button>
+
     <button onclick="exportarCSV()">Descargar Excel CSV</button>
     <button class="danger" onclick="borrarVentas()">Borrar ventas</button>
 
