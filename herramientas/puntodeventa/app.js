@@ -164,10 +164,10 @@ function render() {
 
 <br>
 
-        Compra: $${p.costo.toFixed(2)} | Venta: $${p.precio.toFixed(2)}
+        Compra: $${dinero(p.costo)} | Venta: $${dinero(p.precio)}
 
 <br>
-        Ganancia por pieza: $${ganancia.toFixed(2)}
+        Ganancia por pieza: $${dinero(ganancia)}
 
         <div class="acciones">
           <button onclick="sumarStock('${p.codigo}')">+ Stock</button>
@@ -183,8 +183,8 @@ function render() {
       <div class="venta">
         <strong>${v.nombre}</strong><br>
         ${v.fecha}<br>
-        Venta: $${v.precio.toFixed(2)}
-| Ganancia: $${v.ganancia.toFixed(2)}
+        Venta: $${dinero(v.precio)}
+| Ganancia: $${dinero(v.ganancia)}
         <button class="danger" onclick="devolverVenta(${index})">Devolver al stock</button>
       </div>
     `;
