@@ -293,3 +293,23 @@ function cargarRespaldo(event) {
 
   lector.readAsText(archivo);
 }
+
+
+
+
+function buscarActualizacion() {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if (reg) {
+        reg.update().then(() => {
+          alert("Buscando actualización. La app se recargará.");
+          location.reload();
+        });
+      } else {
+        location.reload();
+      }
+    });
+  } else {
+    location.reload();
+  }
+}
