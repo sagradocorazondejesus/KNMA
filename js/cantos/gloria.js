@@ -50,7 +50,7 @@ s[D]olo tu altis[C]imo
 J[B7]esucrist[Em]o
 con el Santo Espiritu
 en la gl[B7]oria de Dios P[Em]adre
-[D]amen, [C]amen, [D]am[Em]en.
+[D]amen, [C]amen, [B7]am[Em]en.
 
 
 `
