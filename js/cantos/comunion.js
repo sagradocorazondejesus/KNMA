@@ -1,4 +1,55 @@
 window.CANTOS_COMUNION = [
+{
+  titulo: "Ya no eres pan y vino",
+  categoria: "Comunion",
+  tiempo: "Ordinario",
+  tono: "D",
+  autor: "Kerigma",
+  notas: "Canto de comunion",
+  letra:`
+[Verso 1]
+Ya no eres pan y vino
+Ahora que eres cuerpo y sangre, vives en mí
+Y de rodillas yo caigo a contemplar Tu bondad
+¿Cómo no Te voy a adorar?
+
+[Verso 2]
+Mientras Te pierdes en mis labios
+Tu gracia va inundando todo mi corazón
+Por esa paz que me llena de alegría mi ser
+¿Cómo no Te voy a adorar?
+
+[Coro]
+Señor Jesús, mi salvador
+Amor eterno, amor divino
+Ya no falta nada, lo tengo todo
+Te tengo a Ti
+Ya no falta nada, lo tengo todo
+Te tengo a Ti
+
+[Verso 3]
+Dueño y Rey del universo
+¿Cómo puede ser posible que busques mi amor?
+Tú tan grande y yo pequeño y Te fijas en mí
+¿Cómo no Te voy a adorar?
+
+[Verso 4]
+De rodillas, yo Te pido
+Que el día cuando Tú me llames sea como hoy
+Para mirarte a los ojos y poderte decir
+Que ¿cómo no Te voy a adorar?
+
+[Coro]
+Señor Jesús, mi salvador
+Amor eterno, amor divino
+Ya no falta nada, lo tengo todo
+Te tengo a Ti
+Ya no falta nada, lo tengo todo
+Te tengo a Ti
+
+Te tengo a Ti
+`
+},
   {
     titulo: "El Señor nos invita ya",
     categoria: "Comunion",
