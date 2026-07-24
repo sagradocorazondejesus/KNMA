@@ -1,4 +1,37 @@
 window.CANTOS_ENTRADA = [
+{
+  titulo: "Alabanzas",
+  categoria: "Entrada",
+  tiempo: "Ordinario",
+  tono: "D",
+  autor: "Kerigma",
+  notas: "Canto de entrada, ordinario",
+  letra:`
+[verso 1]
+[D]Este es el día y [Em]el lugar
+Di[G]os está aquí y te qu[A7]iere hablar
+[D]Abre las puertas esc[Em]úchalo
+Y d[G]éjalo entr[A7]ar
+
+[Verso 2]
+[D]Este es el día y [Em]el lugar
+Di[G]os está aquí y te qu[A7]iere hablar
+[D]Abre las puertas de t[Em]u corazón
+Y emp[G]ieza a cant[A7]ar
+
+[Coro 1]
+Alab[D]anzas al Señ[Bm]or
+Por sus [G]obras por sus d[A7]ones
+Alab[D]anzas al Señ[Bm]or
+Por la v[G]ida y su pal[A7]abra
+Y dad g[F#7]racias al Señ[Bm]or
+Nuestro D[G]ios [A7]
+Por su a[D]mor
+
+
+`
+},
+
   {
     titulo: "Canten con gozo con ilusión",
     categoria: "Entrada",
