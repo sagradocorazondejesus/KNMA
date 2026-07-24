@@ -1,5 +1,27 @@
 window.CANTOS_ENTRADA = [
 {
+  titulo: "Que alegría cuando me.dijeron",
+  categoria: "Entrada",
+  tiempo: "Ordinario",
+  tono: "G",
+  autor: "Kerigma",
+  notas: "Canto de entrada, ordinario",
+  letra:`
+[Coro]
+[G]¡Que alegría! c[C]uando me dij[G]eron:
+V[C]amos a l[A7]a casa del Señ[D7]or.
+Ya est[G]án pis[G7]ando nuestro p[C]ies [Cm]
+Tus umbr[G]ales Jer[D]usal[G]én.(2)
+
+[Verso 1]
+Jerusal[G]én está fund[Em]ada
+Cómo ciud[C]ad bien comp[D7]acta
+All[G]á suben las tr[C]ibus [Cm]
+Las tr[G]ibus d[D]el Señ[G]or
+
+`
+},
+{
   titulo: "Alabanzas",
   categoria: "Entrada",
   tiempo: "Ordinario",
