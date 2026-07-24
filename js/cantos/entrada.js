@@ -1,6 +1,6 @@
 window.CANTOS_ENTRADA = [
 {
-  titulo: "Que alegría cuando me.dijeron",
+  titulo: "Que alegría cuando me dijeron",
   categoria: "Entrada",
   tiempo: "Ordinario",
   tono: "G",
