@@ -326,3 +326,42 @@ function alternarListaGrande(){
   const lista = document.getElementById("listaCantos");
   lista.classList.toggle("lista-grande");
 }
+
+function toggleAutoScroll() {
+
+    if (!autoScrollActivo) {
+
+        autoScrollActivo = true;
+        document.getElementById("btnAutoScroll").textContent = "⏸ Pausar";
+
+        intervaloAutoScroll = setInterval(() => {
+
+            window.scrollBy({
+                top: velocidadScroll,
+                behavior: "instant"
+            });
+
+            // Llegó al final
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
+                detenerAutoScroll();
+            }
+
+        }, 30);
+
+    } else {
+
+        detenerAutoScroll();
+
+    }
+
+}
+
+function detenerAutoScroll() {
+
+    autoScrollActivo = false;
+
+    clearInterval(intervaloAutoScroll);
+
+    document.getElementById("btnAutoScroll").textContent = "▶ Auto";
+
+}
