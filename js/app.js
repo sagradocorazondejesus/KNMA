@@ -20,6 +20,10 @@ let verSoloFavoritos = false;
 let favoritos = JSON.parse(localStorage.getItem("favoritosKerigma")) || [];
 let mostrarAcordes = true;
 
+let autoScrollActivo = false;
+let intervaloAutoScroll = null;
+let velocidadScroll = 1; // píxeles por paso
+
 function cargarLista(){
   let totalMostrados = 0;
   const lista = document.getElementById("listaCantos");
