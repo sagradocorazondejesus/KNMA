@@ -332,12 +332,7 @@ button{
 
 
 
-#listaCantos{
-  max-height:320px;
-  overflow-y:auto;
-}
-
-#listaCantos.lista-grande{
-  max-height:70vh !important;
+.lista-scroll{
+  max-height:330px;
   overflow-y:auto;
 }
