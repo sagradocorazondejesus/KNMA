@@ -327,41 +327,69 @@ function alternarListaGrande(){
   lista.classList.toggle("lista-grande");
 }
 
-function toggleAutoScroll() {
+function toggleAutoScroll(){
 
-    if (!autoScrollActivo) {
+  if(!autoScrollActivo){
 
-        autoScrollActivo = true;
-        document.getElementById("btnAutoScroll").textContent = "⏸ Pausar";
+    autoScrollActivo = true;
 
-        intervaloAutoScroll = setInterval(() => {
+    const btnAuto = document.getElementById("btnAutoScroll");
 
-            window.scrollBy({
-                top: velocidadScroll,
-                behavior: "instant"
-            });
-
-            // Llegó al final
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
-                detenerAutoScroll();
-            }
-
-        }, 30);
-
-    } else {
-
-        detenerAutoScroll();
-
+    if(btnAuto){
+      btnAuto.textContent = "⏸ Pausar";
     }
 
+    intervaloAutoScroll = setInterval(() => {
+
+      let contenedor;
+
+      const presentacionMisa =
+        document.getElementById("presentacionMisa");
+
+      const estaEnMisa =
+        presentacionMisa &&
+        presentacionMisa.style.display !== "none";
+
+      if(estaEnMisa){
+        contenedor = document.getElementById("misaContenido");
+      }else{
+        contenedor = document.getElementById("letraCanto");
+      }
+
+      if(!contenedor){
+        detenerAutoScroll();
+        return;
+      }
+
+      contenedor.scrollTop += velocidadScroll;
+
+      const llegoAlFinal =
+        contenedor.scrollTop + contenedor.clientHeight
+        >= contenedor.scrollHeight - 2;
+
+      if(llegoAlFinal){
+        detenerAutoScroll();
+      }
+
+    }, 30);
+
+  }else{
+
+    detenerAutoScroll();
+
+  }
 }
 
-function detenerAutoScroll() {
+function detenerAutoScroll(){
 
-    autoScrollActivo = false;
+  autoScrollActivo = false;
 
-    clearInterval(intervaloAutoScroll);
+  clearInterval(intervaloAutoScroll);
+  intervaloAutoScroll = null;
 
-    document.getElementById("btnAutoScroll").textContent = "▶ Auto";
+  const btnAuto = document.getElementById("btnAutoScroll");
 
+  if(btnAuto){
+    btnAuto.textContent = "▶ Auto";
+  }
 }
