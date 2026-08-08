@@ -405,7 +405,7 @@ function toggleAutoScroll(){
 
       }
 
-    }, 30);
+    }, 45);
 
   }else{
 
