@@ -336,3 +336,8 @@ button{
   max-height:330px;
   overflow-y:auto;
 }
+
+
+.lista-grande{
+  max-height:70vh !important;
+}
