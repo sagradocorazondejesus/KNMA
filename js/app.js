@@ -320,13 +320,6 @@ function cargarFavoritosPantalla(){
   });
 }
 
-mostrarPantalla("cantos");
-
-function alternarListaGrande(){
-  const lista = document.getElementById("listaCantos");
-  lista.classList.toggle("lista-grande");
-}
-
 function toggleAutoScroll(){
 
   if(!autoScrollActivo){
@@ -339,9 +332,13 @@ function toggleAutoScroll(){
       btnAuto.textContent = "⏸ Pausar";
     }
 
-    intervaloAutoScroll = setInterval(() => {
+    const btnAutoMisa = document.getElementById("btnAutoScrollMisa");
 
-      let contenedor;
+    if(btnAutoMisa){
+      btnAutoMisa.textContent = "⏸ Pausar";
+    }
+
+    intervaloAutoScroll = setInterval(() => {
 
       const presentacionMisa =
         document.getElementById("presentacionMisa");
@@ -350,25 +347,49 @@ function toggleAutoScroll(){
         presentacionMisa &&
         presentacionMisa.style.display !== "none";
 
+      // ==========================
+      // MISA DE HOY
+      // ==========================
       if(estaEnMisa){
-        contenedor = document.getElementById("misaContenido");
-      }else{
-        contenedor = document.getElementById("letraCanto");
+
+        const contenedor =
+          document.getElementById("misaContenido");
+
+        if(!contenedor){
+          detenerAutoScroll();
+          return;
+        }
+
+        contenedor.scrollTop += velocidadScroll;
+
+        const llegoAlFinal =
+          contenedor.scrollTop + contenedor.clientHeight
+          >= contenedor.scrollHeight - 2;
+
+        if(llegoAlFinal){
+          detenerAutoScroll();
+        }
+
       }
 
-      if(!contenedor){
-        detenerAutoScroll();
-        return;
-      }
+      // ==========================
+      // CANTO NORMAL
+      // ==========================
+      else{
 
-      contenedor.scrollTop += velocidadScroll;
+        window.scrollBy({
+          top: velocidadScroll,
+          behavior: "instant"
+        });
 
-      const llegoAlFinal =
-        contenedor.scrollTop + contenedor.clientHeight
-        >= contenedor.scrollHeight - 2;
+        const llegoAlFinal =
+          window.innerHeight + window.scrollY
+          >= document.documentElement.scrollHeight - 2;
 
-      if(llegoAlFinal){
-        detenerAutoScroll();
+        if(llegoAlFinal){
+          detenerAutoScroll();
+        }
+
       }
 
     }, 30);
@@ -391,5 +412,11 @@ function detenerAutoScroll(){
 
   if(btnAuto){
     btnAuto.textContent = "▶ Auto";
+  }
+
+  const btnAutoMisa = document.getElementById("btnAutoScrollMisa");
+
+  if(btnAutoMisa){
+    btnAutoMisa.textContent = "▶ Auto";
   }
 }
