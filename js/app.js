@@ -320,6 +320,19 @@ function cargarFavoritosPantalla(){
   });
 }
 
+
+
+function alternarListaGrande(){
+  const lista = document.getElementById("listaCantos");
+
+  if(!lista) return;
+
+  lista.classList.toggle("lista-grande");
+}
+
+
+
+
 function toggleAutoScroll(){
 
   if(!autoScrollActivo){
