@@ -152,9 +152,16 @@
   <section id="presentacionMisa" class="panel misa-presentacion" style="display:none;">
 
     <div class="misa-cabecera">
-      <span id="misaContador">1 / 1</span>
-      <button onclick="cerrarPresentacionMisa()">✕ Salir</button>
-    </div>
+  <span id="misaContador">1 / 1</span>
+
+  <button id="btnAutoScrollMisa" onclick="toggleAutoScroll()">
+    ▶ Auto
+  </button>
+
+  <button onclick="cerrarPresentacionMisa()">
+    ✕ Salir
+  </button>
+</div>
 
     <h2 id="misaMomento"></h2>
 
