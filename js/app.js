@@ -438,7 +438,7 @@ function detenerAutoScroll(){
 
 function actualizarIndicadorVelocidad(){
 
-  const intervalo = 1200; // debe ser igual al valor de tu setInterval
+  const intervalo = 150; // debe ser igual al valor de tu setInterval
   const pixelsPorSegundo =
     Math.round((1000 / intervalo) * velocidadScroll);
 
