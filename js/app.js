@@ -433,3 +433,29 @@ function detenerAutoScroll(){
     btnAutoMisa.textContent = "▶ Auto";
   }
 }
+
+
+
+function actualizarIndicadorVelocidad(){
+
+  const intervalo = 40; // debe ser igual al valor de tu setInterval
+  const pixelsPorSegundo =
+    Math.round((1000 / intervalo) * velocidadScroll);
+
+  const indicador =
+    document.getElementById("velocidadAutoScroll");
+
+  if(indicador){
+    indicador.textContent = pixelsPorSegundo + " px/s";
+  }
+
+  const indicadorMisa =
+    document.getElementById("velocidadAutoScrollMisa");
+
+  if(indicadorMisa){
+    indicadorMisa.textContent = pixelsPorSegundo + " px/s";
+  }
+}
+
+
+actualizarIndicadorVelocidad();
